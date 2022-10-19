@@ -16,22 +16,24 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="手写要点：1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来) 1234567891011121314Function.prototype.bind &#x3D; function(context, ...args1) &amp;#123;    const self &#x3D; this;">
+    <meta name="description" content="nextTick作用：接收一个回调函数作为参数，并将这个回调函数延迟到DOM更新后执行 使用场景：想要操作 基于最新数据生成的DOM时，就将这个操作放在nextTick的回调中, 如1. created生命周期中操作DOM, 2. 修改了数据后，获取DOM值 3. 原本隐藏的input元素显示后，获取焦点或者获得宽高等场景。 调用方式： Vue.nextTick(callback); Vue.ne">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手写系列-bind">
-<meta property="og:url" content="http://example.com/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/index.html">
+<meta property="og:title" content="Vue源码-nextTick">
+<meta property="og:url" content="http://example.com/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="手写要点：1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来) 1234567891011121314Function.prototype.bind &#x3D; function(context, ...args1) &amp;#123;    const self &#x3D; this;">
+<meta property="og:description" content="nextTick作用：接收一个回调函数作为参数，并将这个回调函数延迟到DOM更新后执行 使用场景：想要操作 基于最新数据生成的DOM时，就将这个操作放在nextTick的回调中, 如1. created生命周期中操作DOM, 2. 修改了数据后，获取DOM值 3. 原本隐藏的input元素显示后，获取焦点或者获得宽高等场景。 调用方式： Vue.nextTick(callback); Vue.ne">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-29e0e7551af517c077e22d733972c3e4_720w.webp">
 <meta property="article:published_time" content="2022-10-16T07:32:51.000Z">
-<meta property="article:modified_time" content="2022-10-16T13:43:23.366Z">
+<meta property="article:modified_time" content="2022-10-19T14:34:25.507Z">
 <meta property="article:author" content="Sarah">
 <meta property="article:tag" content="bind">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-29e0e7551af517c077e22d733972c3e4_720w.webp">
   
   
   
-  <title>手写系列-bind - 童话镇</title>
+  <title>Vue源码-nextTick - 童话镇</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">手写系列-bind</span>
+            <span id="subtitle">Vue源码-nextTick</span>
           
         </div>
 
@@ -210,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          460 字
+          2.5k 字
         
       </span>
     
@@ -221,7 +223,7 @@
         
         
         
-          4 分钟
+          22 分钟
         
       </span>
     
@@ -259,16 +261,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">手写系列-bind</h1>
+            <h1 style="display: none">Vue源码-nextTick</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="手写要点："><a href="#手写要点：" class="headerlink" title="手写要点："></a>手写要点：</h4><p>1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args1</span>) &#123;<br>    <span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">this</span>;<br><br>    <span class="hljs-keyword">let</span> resultFn = <span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)&#123;<br>        self.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span> <span class="hljs-keyword">instanceof</span> resultFn ? <span class="hljs-variable language_">this</span> : context, ...args1, ...args2);<br>    &#125;<br><br>    <span class="hljs-comment">// resultFn.prototype = self.prototype; 修改了resultFn的原型后，直接修改了绑定函数的prototype</span><br>    <span class="hljs-keyword">let</span> fnNo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>();<br>    fnNo.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = self.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br>    resultFn.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">fnNo</span>();<br><br>    <span class="hljs-keyword">return</span> resultFn;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h4 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h4><p><strong>作用</strong>：接收一个回调函数作为参数，并将这个回调函数延迟到DOM更新后执行</p>
+<p><strong>使用场景</strong>：想要操作 基于最新数据生成的DOM时，就将这个操作放在nextTick的回调中, 如1. created生命周期中操作DOM, 2. 修改了数据后，获取DOM值 3. 原本隐藏的input元素显示后，获取焦点或者获得宽高等场景。</p>
+<p><strong>调用方式</strong>：</p>
+<p>Vue.nextTick(callback);</p>
+<p>Vue.nextTick().then(callback);</p>
+<p>vm.$nextTick(callback)</p>
+<p><strong>实现原理</strong>：将传入的回调函数包装成异步任务，异步任务又分微任务和宏任务，为了尽快执行所以优先选择微任务。nextTick提供了四种异步方法: Promise.then, MutationObserver, setImmediate, setTimeout(fn,0)</p>
+<blockquote>
+<p>因为Vue的异步更新策略，当监听到数据发生变化的时候不会立即去更新DOM， 而是开启一个任务队列，并缓存在同一事件循环中发生的所有数据变更。这种做法带来的好处是：可以将多次数据更新合并成一次，减少操作DOM的次数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> callbacks = [] <span class="hljs-comment">// 存放cb的队列</span><br><span class="hljs-keyword">let</span> pending = <span class="hljs-literal">false</span> <span class="hljs-comment">// 是否马上遍历队列，执行cb的标志</span><br><span class="hljs-keyword">let</span> timerFunc <span class="hljs-comment">// nextTick异步实现fn</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-title class_">Promise</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="hljs-title function_">isNative</span>(<span class="hljs-title class_">Promise</span>)) &#123;<br>  <span class="hljs-comment">// Promise方案</span><br>  <span class="hljs-keyword">const</span> p = <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>()<br>  timerFunc = <span class="hljs-function">() =&gt;</span> &#123;<br>    p.<span class="hljs-title function_">then</span>(flushCallbacks) <span class="hljs-comment">// 将flushCallbacks包装进Promise.then中</span><br>  &#125;<br>  isUsingMicroTask = <span class="hljs-literal">true</span><br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isIE &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-title class_">MutationObserver</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; (<br>  <span class="hljs-title function_">isNative</span>(<span class="hljs-title class_">MutationObserver</span>) ||<br>  <span class="hljs-title class_">MutationObserver</span>.<span class="hljs-title function_">toString</span>() === <span class="hljs-string">&#x27;[object MutationObserverConstructor]&#x27;</span><br>)) &#123;<br>  <span class="hljs-comment">// MutationObserver方案</span><br>  <span class="hljs-keyword">let</span> counter = <span class="hljs-number">1</span><br>  <span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MutationObserver</span>(flushCallbacks) <span class="hljs-comment">// 将flushCallbacks作为观测变化的cb</span><br>  <span class="hljs-keyword">const</span> textNode = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-title class_">String</span>(counter)) <span class="hljs-comment">// 创建文本节点</span><br>  <span class="hljs-comment">// 观测文本节点变化</span><br>  observer.<span class="hljs-title function_">observe</span>(textNode, &#123;<br>    <span class="hljs-attr">characterData</span>: <span class="hljs-literal">true</span><br>  &#125;)<br>  <span class="hljs-comment">// timerFunc改变文本节点的data，以触发观测的回调flushCallbacks</span><br>  timerFunc = <span class="hljs-function">() =&gt;</span> &#123; <br>    counter = (counter + <span class="hljs-number">1</span>) % <span class="hljs-number">2</span><br>    textNode.<span class="hljs-property">data</span> = <span class="hljs-title class_">String</span>(counter)<br>  &#125;<br>  isUsingMicroTask = <span class="hljs-literal">true</span><br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> setImmediate !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="hljs-title function_">isNative</span>(setImmediate)) &#123;<br>  <span class="hljs-comment">// setImmediate方案</span><br>  timerFunc = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-title function_">setImmediate</span>(flushCallbacks)<br>  &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-comment">// 最终降级方案setTimeout</span><br>  timerFunc = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">setTimeout</span>(flushCallbacks, <span class="hljs-number">0</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">nextTick</span> (cb?: <span class="hljs-title class_">Function</span>, ctx?: <span class="hljs-title class_">Object</span>) &#123;<br>  <span class="hljs-keyword">let</span> _resolve<br>  <span class="hljs-comment">// 往全局的callbacks队列中添加cb</span><br>  callbacks.<span class="hljs-title function_">push</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (cb) &#123;<br>      <span class="hljs-keyword">try</span> &#123;<br>        cb.<span class="hljs-title function_">call</span>(ctx)<br>      &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>        <span class="hljs-title function_">handleError</span>(e, ctx, <span class="hljs-string">&#x27;nextTick&#x27;</span>)<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (_resolve) &#123;<br>      <span class="hljs-comment">// 这里是支持Promise的写法</span><br>      <span class="hljs-title function_">_resolve</span>(ctx)<br>    &#125;<br>  &#125;)<br>  <span class="hljs-keyword">if</span> (!pending) &#123;<br>    pending = <span class="hljs-literal">true</span><br>    <span class="hljs-comment">// 执行timerFunc，在下一个Tick中执行callbacks中的所有cb</span><br>    <span class="hljs-title function_">timerFunc</span>()<br>  &#125;<br>  <span class="hljs-comment">// 对Promise的实现，这也是我们使用时可以写成nextTick.then的原因</span><br>  <span class="hljs-keyword">if</span> (!cb &amp;&amp; <span class="hljs-keyword">typeof</span> <span class="hljs-title class_">Promise</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;<br>      _resolve = resolve<br>    &#125;)<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">flushCallbacks</span> () &#123;<br>  pending = <span class="hljs-literal">false</span> <span class="hljs-comment">// 注意这里，一旦执行，pending马上被重置为false</span><br>  <span class="hljs-keyword">const</span> copies = callbacks.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>)<br>  callbacks.<span class="hljs-property">length</span> = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; copies.<span class="hljs-property">length</span>; i++) &#123;<br>    copies[i]() <span class="hljs-comment">// 执行每个cb</span><br>  &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
-
-
+<p><img src="https://pic1.zhimg.com/80/v2-29e0e7551af517c077e22d733972c3e4_720w.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Vue 响应式原理：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7074422512318152718">https://juejin.cn/post/7074422512318152718</a></p>
 
                 
               </div>
@@ -287,7 +299,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/" class="category-chain-item">手写系列</a>
+  <a href="/categories/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="category-chain-item">Vue源码解析</a>
   
   
 
@@ -314,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>手写系列-bind</div>
-      <div>http://example.com/2022/10/16/手写系列之- bind/</div>
+      <div>Vue源码-nextTick</div>
+      <div>http://example.com/2022/10/16/Vue系列之- nextTick/</div>
     </div>
     <div class="license-meta">
       
@@ -359,9 +371,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" title="Vue源码-nextTick">
+                      <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" title="Vue源码-vue.use">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue源码-nextTick</span>
+                        <span class="hidden-mobile">Vue源码-vue.use</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -369,8 +381,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/" title="手写系列-call, apply">
-                        <span class="hidden-mobile">手写系列-call, apply</span>
+                      <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/" title="手写系列-bind">
+                        <span class="hidden-mobile">手写系列-bind</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
