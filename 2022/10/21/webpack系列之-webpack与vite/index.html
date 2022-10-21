@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.wallpaperhub.app/cloudcache/9/6/c/e/2/d/96ce2d6ec4bf23df7512dd3f8a67a1ed64846ea6.jpg">
 <meta property="article:published_time" content="2022-10-21T13:58:43.000Z">
-<meta property="article:modified_time" content="2022-10-21T15:29:37.646Z">
+<meta property="article:modified_time" content="2022-10-21T15:33:21.754Z">
 <meta property="article:author" content="Sarah">
 <meta property="article:tag" content="vite, webpack">
 <meta name="twitter:card" content="summary_large_image">
@@ -274,7 +274,7 @@
 <p>2.将代码转化成AST抽象语法树</p>
 <p>3.在AST阶段中去处理代码</p>
 <p>4.把AST抽象语法树变成浏览器可以识别的代码， 然后输出</p>
-<p><img src="https://imgs.itxueyuan.com/139239-20220413135824579-927502402.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="C:\Users\Admin\Desktop\139239-20220413135824579-927502402.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><strong>vite</strong>是直接启动开发服务器，然后按需编译依赖文件。Vite原理:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;./main.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
@@ -283,7 +283,7 @@
 <blockquote>
 <p>Vite首页加载时速度较慢。是因为vite使用浏览器承载部分打包与模块加载工作，因此即使开发服务器快速启动，但是浏览器也需要更多时间来下载和处理所有这些请求。</p>
 </blockquote>
-<p><img src="https://imgs.itxueyuan.com/139239-20220413135834497-425297286.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="C:\Users\Admin\Desktop\139239-20220413135834497-425297286.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h4 id="2-编译速度"><a href="#2-编译速度" class="headerlink" title="2. 编译速度"></a>2. 编译速度</h4><hr>
 <p>vite将应用中的模块分为：</p>
 <p><strong>依赖：</strong>通常为纯js文件, 开发时不会变动。—–使用esbuild预构建依赖。Esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍</p>
@@ -291,6 +291,7 @@
 <p>Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age&#x3D;31536000,immutable 进行<em>强缓存</em>，因此一旦被缓存它们将不需要再次请求。</p>
 <h4 id="3-HMR-hot-module-replacement"><a href="#3-HMR-hot-module-replacement" class="headerlink" title="3. HMR(hot module replacement)"></a>3. HMR(hot module replacement)</h4><hr>
 <p>当某个模块内容改变时，vite让浏览器去重新请求该模块即可，webpack需要将该模块的所有依赖重新编译；</p>
+<p><strong>注意：</strong></p>
 <blockquote>
 <p>当需要打包到生产环境时，vite使用传统的rollup进行打包，确保生产构建实现性能优化技术，如 tree-shaking、延迟加载和常见的块拆分。</p>
 <p>所以，vite的优势是体现在开发阶段，另外，由于vite使用的是ES Module，所以代码中不可以使用CommonJs.</p>
