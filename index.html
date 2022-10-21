@@ -476,67 +476,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
-          Vue源码-Vue.use
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
-        <div>
-          Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-16 15:32" pubdate>
-              2022-10-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="category-chain-item">Vue源码解析</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/bind/">#bind</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
         <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" target="_self">
           Vue源码-nextTick
         </a>
@@ -598,15 +537,76 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/" target="_self">
-          手写系列-bind
+        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
+          Vue源码-Vue.use
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
         <div>
-          手写要点：1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来) 1234567891011121314Function.prototype.bind = function(context, ...args1) &#123;    const self = this;
+          Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-16 15:32" pubdate>
+              2022-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="category-chain-item">Vue源码解析</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/bind/">#bind</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/" target="_self">
+          手写系列-call, apply
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/" target="_self">
+        <div>
+          call, apply, bind 的区别  call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。 apply的参数是一个数组， call 和bind的参数是一个个传入。   12345678910111213141516171819202122232425262728const perso
         </div>
       </a>
 
@@ -645,7 +645,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/bind/">#bind</a>
+              <a href="/tags/call-apply/">#call, apply</a>
             
           </div>
         
