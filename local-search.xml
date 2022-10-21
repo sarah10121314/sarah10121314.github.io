@@ -107,6 +107,31 @@
   
   
   <entry>
+    <title>Vue源码-Vue.use</title>
+    <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/"/>
+    <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p><ol><li>如果插件是一个对象，必须提供install方法。</li><li>如果插件是一个函数，它会被作为install方法。</li><li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li><li>需要在new Vue()之前调用</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure><blockquote><p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue源码解析</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>bind</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue源码-nextTick</title>
     <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/"/>
     <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/</url>
@@ -132,16 +157,16 @@
   
   
   <entry>
-    <title>Vue源码-Vue.use</title>
-    <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/"/>
-    <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/</url>
+    <title>手写系列-bind</title>
+    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/"/>
+    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/</url>
     
-    <content type="html"><![CDATA[<h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p><ol><li>如果插件是一个对象，必须提供install方法。</li><li>如果插件是一个函数，它会被作为install方法。</li><li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li><li>需要在new Vue()之前调用</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure><blockquote><p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h4 id="手写要点："><a href="#手写要点：" class="headerlink" title="手写要点："></a>手写要点：</h4><p>1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来)</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args1</span>) &#123;<br>    <span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">this</span>;<br><br>    <span class="hljs-keyword">let</span> resultFn = <span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)&#123;<br>        self.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span> <span class="hljs-keyword">instanceof</span> resultFn ? <span class="hljs-variable language_">this</span> : context, ...args1, ...args2);<br>    &#125;<br><br>    <span class="hljs-comment">// resultFn.prototype = self.prototype; 修改了resultFn的原型后，直接修改了绑定函数的prototype</span><br>    <span class="hljs-keyword">let</span> fnNo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>();<br>    fnNo.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = self.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br>    resultFn.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">fnNo</span>();<br><br>    <span class="hljs-keyword">return</span> resultFn;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
       
-      <category>Vue源码解析</category>
+      <category>手写系列</category>
       
     </categories>
     
@@ -199,31 +224,6 @@
     <tags>
       
       <tag>debounce, throttle</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>手写系列-bind</title>
-    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/"/>
-    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/</url>
-    
-    <content type="html"><![CDATA[<h4 id="手写要点："><a href="#手写要点：" class="headerlink" title="手写要点："></a>手写要点：</h4><p>1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来)</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args1</span>) &#123;<br>    <span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">this</span>;<br><br>    <span class="hljs-keyword">let</span> resultFn = <span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)&#123;<br>        self.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span> <span class="hljs-keyword">instanceof</span> resultFn ? <span class="hljs-variable language_">this</span> : context, ...args1, ...args2);<br>    &#125;<br><br>    <span class="hljs-comment">// resultFn.prototype = self.prototype; 修改了resultFn的原型后，直接修改了绑定函数的prototype</span><br>    <span class="hljs-keyword">let</span> fnNo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>();<br>    fnNo.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = self.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br>    resultFn.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">fnNo</span>();<br><br>    <span class="hljs-keyword">return</span> resultFn;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>手写系列</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>bind</tag>
       
     </tags>
     
