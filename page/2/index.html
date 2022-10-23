@@ -217,15 +217,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" target="_self">
-          Vue源码-nextTick
+        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
+          Vue源码-Vue.use
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
         <div>
-          nextTick作用：接收一个回调函数作为参数，并将这个回调函数延迟到DOM更新后执行 使用场景：想要操作 基于最新数据生成的DOM时，就将这个操作放在nextTick的回调中, 如1. created生命周期中操作DOM, 2. 修改了数据后，获取DOM值 3. 原本隐藏的input元素显示后，获取焦点或者获得宽高等场景。 调用方式： Vue.nextTick(callback); Vue.ne
+          Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne
         </div>
       </a>
 
@@ -343,73 +343,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
-          <img src="https://cdn.wallpaperhub.app/cloudcache/c/f/2/f/1/1/cf2f11b123210db5655a41ed147c174cae752f12.jpg" srcset="/img/loading.gif" lazyload alt="手写系列-debounce, throttle">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
-          手写系列-debounce, throttle
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
-        <div>
-          防抖，节流控制函数的调用频率 节流：函数在一段时间内的多次调用，仅第一次有效。（每次事件触发后总是等待一段时间执行，如果在等待时间内事件再次触发，则不做处理） 防抖：函数在一段时间内的多次调用，仅最后一次有效。（每次事件触发的时候总是等待一段时间后再执行，如果在等待时间内再次触发，则重新计算等待时间） 12345678910// debouncefunction myDebounce(fn, de
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-16 15:32" pubdate>
-              2022-10-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/" class="category-chain-item">手写系列</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/debounce-throttle/">#debounce, throttle</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/" target="_self">
           <img src="https://cdn.wallpaperhub.app/cloudcache/1/b/6/a/5/b/1b6a5b991deb364b476fe17af375bb2eae07f8a2.jpg" srcset="/img/loading.gif" lazyload alt="手写系列-call, apply">
         </a>
@@ -466,6 +399,73 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/call-apply/">#call, apply</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
+          <img src="https://cdn.wallpaperhub.app/cloudcache/c/f/2/f/1/1/cf2f11b123210db5655a41ed147c174cae752f12.jpg" srcset="/img/loading.gif" lazyload alt="手写系列-debounce, throttle">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
+          手写系列-debounce, throttle
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" target="_self">
+        <div>
+          防抖，节流控制函数的调用频率 节流：函数在一段时间内的多次调用，仅第一次有效。（每次事件触发后总是等待一段时间执行，如果在等待时间内事件再次触发，则不做处理） 防抖：函数在一段时间内的多次调用，仅最后一次有效。（每次事件触发的时候总是等待一段时间后再执行，如果在等待时间内再次触发，则重新计算等待时间） 12345678910// debouncefunction myDebounce(fn, de
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-16 15:32" pubdate>
+              2022-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/" class="category-chain-item">手写系列</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/debounce-throttle/">#debounce, throttle</a>
             
           </div>
         
