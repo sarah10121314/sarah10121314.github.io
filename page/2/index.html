@@ -217,15 +217,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
-          Vue源码-Vue.use
+        <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" target="_self">
+          Vue源码-nextTick
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" target="_self">
         <div>
-          Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne
+          nextTick作用：接收一个回调函数作为参数，并将这个回调函数延迟到DOM更新后执行 使用场景：想要操作 基于最新数据生成的DOM时，就将这个操作放在nextTick的回调中, 如1. created生命周期中操作DOM, 2. 修改了数据后，获取DOM值 3. 原本隐藏的input元素显示后，获取焦点或者获得宽高等场景。 调用方式： Vue.nextTick(callback); Vue.ne
         </div>
       </a>
 
