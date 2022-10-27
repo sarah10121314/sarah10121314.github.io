@@ -4,6 +4,95 @@
   
   
   <entry>
+    <title>English-02</title>
+    <link href="/2022/10/27/English-02/"/>
+    <url>/2022/10/27/English-02/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Sending-a-package"><a href="#Sending-a-package" class="headerlink" title="Sending  a package"></a>Sending  a package</h4><p>Oh, here is the package I’ve been expecting  for a whole week.</p><p>Open it. well, i have to say this color does not look good on you.</p><p>That makes two of us. It is so different from the pictures on the website. i have to return it.</p><p>Hi, I’d like to send this package. It’s a dress.</p><p>Sure, please write down your name, address, contact information and recipient’s name, address and contact information.</p><p>Done, anything else? Would you like to send it by standard delivery or Express delivery?</p><p>Standard delivery please.</p><h4 id="Changing-my-hair-style"><a href="#Changing-my-hair-style" class="headerlink" title="Changing my hair style"></a>Changing my hair style</h4><p>Hi, i want  to have a new hairdo. I’m a bit tired of long straight hair.</p><p>Well, maybe try some colors?. How about dye your hair brown?</p><p>I have never dyed my hair before. I can give it a try. I also want to add more volumes to my hair.</p><p>Any suggestions?</p><p>You should definitely  try wavy hair. You can totally pull it off.</p><p>Sounds good. Please trim my bangs. I’d like to have air bangs.</p><p>No problem, let’s get started.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>English learing</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>package</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>HTTP和HTTPS</title>
+    <link href="/2022/10/23/HTTP%E5%92%8CHTTPS/"/>
+    <url>/2022/10/23/HTTP%E5%92%8CHTTPS/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>网络</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>http, https</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>TCP连接之四次挥手</title>
+    <link href="/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/"/>
+    <url>/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>TCP连接之三次握手</title>
+    <link href="/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
+    <url>/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DNS解析</title>
+    <link href="/2022/10/23/DNS%E8%A7%A3%E6%9E%90/"/>
+    <url>/2022/10/23/DNS%E8%A7%A3%E6%9E%90/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Learning &amp;&amp; shopping</title>
     <link href="/2022/10/23/English-01/"/>
     <url>/2022/10/23/English-01/</url>
@@ -159,7 +248,7 @@
     <link href="/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/"/>
     <url>/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93/</url>
     
-    <content type="html"><![CDATA[<p>大多数设备的刷新频率是60Hz，也就是说浏览器对每一帧画面的渲染工作要在16ms内完成，超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。</p>]]></content>
+    <content type="html"><![CDATA[<p>大多数设备的刷新频率是60Hz，也就是说浏览器对每一帧画面的渲染工作要在16ms内完成，超出这个时间，页面的渲染就会出现卡顿现象，影响用户体验。</p><blockquote><p>图像在屏幕上更新的速度，也即屏幕上的图像每秒钟出现的次数，它的单位是赫兹（Hz）。</p><p>刷新频率越高，屏幕上图像闪烁感就越小，稳定性也就越高，换言之对视力的保护也越好。一般时人的眼睛、不容易察觉75Hz以上刷新频率带来的闪烁感，因此最好能将您显示卡刷新频率调到75Hz以上。</p></blockquote>]]></content>
     
     
     <categories>
