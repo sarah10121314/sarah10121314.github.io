@@ -20,7 +20,7 @@
     
     <tags>
       
-      <tag>package</tag>
+      <tag>package, English</tag>
       
     </tags>
     
@@ -33,7 +33,7 @@
     <link href="/2022/10/23/HTTP%E5%92%8CHTTPS/"/>
     <url>/2022/10/23/HTTP%E5%92%8CHTTPS/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>HTTP（hypertext transfer protocal 超文本传输协议） 是一个在计算机世界里专门在两点之间传输文字，图片，音频，视频等超文本数据的约定和规范。</p><p>问：http是从互联网服务器传输超文本到本地浏览器的协议，这种说法对吗？</p><p>答：不对。因为也可以是服务器到服务器之间传输。</p><h4 id="HTTP1-0-HTTP1-1"><a href="#HTTP1-0-HTTP1-1" class="headerlink" title="HTTP1.0 + HTTP1.1"></a>HTTP1.0 + HTTP1.1</h4><table><thead><tr><th>HTTP1.0</th><th>HTTP1.1</th></tr></thead><tbody><tr><td>短连接，每发起一个请求就要建立一次TCP连接</td><td>管道传输，保持长连接，只要任何一端没有明确提出断开连接，就保持TCP的连接状态，解决了请求的队头阻塞</td></tr></tbody></table><p><strong>管道传输</strong>：即在同一个TCP连接里面，客户端可以发起多个请求。只要第一个请求发出去了，不必等其响应回来，就可以发第二个请求出去，可以减少整体的响应时间</p><p>但是，服务器必须按照接收到的请求的顺序发送对这些管道化请求的响应。假设客户端先发送A请求，后发送B请求，但是服务端先收到了B请求，就要先响应B请求，再响应A请求。假如处理B请求的时候，耗时比较长，那么请求A的响应就会被阻塞，这称为<strong>响应队头阻塞</strong>。</p><p>所以，HTTP1.1管道传输解决了请求的队头阻塞，但是没有解决响应的队头阻塞。</p><hr><h4 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h4><p>HTTP是明文传输，所以安全上存在以下三个风险：1. 窃听风险 2. 篡改风险 3. 冒充风险</p><p>HTTPS在HTTP与TCP层加入了SSL&#x2F;TLS协议，很好地解决了上述的风险：</p><ol><li>信息加密：混合加密实现了信息的机密性，解决了窃听的风险</li><li>校验机制：摘要算法为数据生成一份独一无二的指纹，用于校验数据的完整性，解决了篡改的风险</li><li>身份证书：将服务器公钥放入到数字证书中，解决了冒充的风险</li></ol><p>HTTPS协议的主要作用可以分为两种：</p><ol><li>建立一个安全信息通道，保证数据传输的安全</li><li>确认网站的真实性</li></ol><table><thead><tr><th>HTTP</th><th>HTTPS</th></tr></thead><tbody><tr><td>不需要申请证书</td><td>需要到CA申请证书，一般免费证书比较少，因而需要一些费用</td></tr><tr><td>明文传输，不安全</td><td>加密传输+认证身份</td></tr><tr><td>80端口</td><td>443端口</td></tr></tbody></table><h4 id="客户端在使用HTTPS方式与web服务器通信时的步骤："><a href="#客户端在使用HTTPS方式与web服务器通信时的步骤：" class="headerlink" title="客户端在使用HTTPS方式与web服务器通信时的步骤："></a>客户端在使用HTTPS方式与web服务器通信时的步骤：</h4><ol><li>客户端使用https的URL访问web服务器，要求与web服务器建立SSL连接</li><li>web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端</li><li>客户端的浏览器和web服务器开始协商SSL&#x2F;TLS连接的安全等级，也就是信息加密的等级</li><li>客户端用预置的CA列表验证证书，如果有问题则提示风险。验证后，客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用服务器的公钥对会话密钥进行加密，并传送给服务端。</li><li>双方都知道了会话密钥，用它来加密通信。</li></ol><p>尽管HTTPS并非绝对安全，掌握根证书的机构，掌握加密算法的组织同样可以进行中间人形式的攻击，但HTTPS仍是现行架构下最安全的解决方案，它大幅增加了中间人攻击的成本。</p><h4 id="SSL与TLS"><a href="#SSL与TLS" class="headerlink" title="SSL与TLS"></a>SSL与TLS</h4><p>SSL1.0未发布，SSL2.0有严重漏洞， SSL3.0得到应用，但是也不安全</p><p>TLS是SSL的升级版，TLS1.0, TLS1.1, TLS1.2, TLS1.3。 目前应用最广泛的是<strong>TLS1.2</strong>, 之前的版本都已经被认为是不安全的了。</p><h4 id="SSL-x2F-TLS协议（TLS1-2-的基本过程："><a href="#SSL-x2F-TLS协议（TLS1-2-的基本过程：" class="headerlink" title="SSL&#x2F;TLS协议（TLS1.2)的基本过程："></a>SSL&#x2F;TLS协议（TLS1.2)的基本过程：</h4><ol><li>客户端向服务器端索要并验证公钥</li><li>双方协商生成对话密钥</li><li>双方采用对话密钥进行加密通信。</li></ol><table><thead><tr><th>对称加密</th><th>非对称加密</th></tr></thead><tbody><tr><td>加密解密使用同一个密钥，算法简单，加解密容易，效率高，执行快，但是被拦截后不安全</td><td>加密和解密使用冈的密钥，一把作为公开的公钥，一把作为私钥。公钥加密的信息，只有私钥能解密。私钥加密的信息，只有公钥能解密</td></tr><tr><td>DES, AES, 3DES</td><td>RSA, ECC</td></tr></tbody></table><p>A和B传输数据，A具有自己的公私钥，B有自己的公私钥，公钥是在公网上公开的，任何人都能看见。私钥自己保留。A拿着B的公钥+信息数据，只有B手里的私钥才能解开。假设C拦截了A传递的信息，他是解不开的，因为C没有这个公钥对应的私钥，所以比较安全。</p>]]></content>
     
     
     <categories>
@@ -67,19 +67,6 @@
   
   
   <entry>
-    <title>TCP连接之三次握手</title>
-    <link href="/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
-    <url>/2022/10/23/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>DNS解析</title>
     <link href="/2022/10/23/DNS%E8%A7%A3%E6%9E%90/"/>
     <url>/2022/10/23/DNS%E8%A7%A3%E6%9E%90/</url>
@@ -97,7 +84,7 @@
     <link href="/2022/10/23/English-01/"/>
     <url>/2022/10/23/English-01/</url>
     
-    <content type="html"><![CDATA[<h4 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h4><p>Learning is an import part of life. We learn in big and little ways, whether we realize it or not. </p><p>You are constantly learning, while reading an article, practicing a new language, making a mistake, meeting someone new, talking to a friend, watching a TV show or even asking your parents a question. All of these activities teach you something new.</p><p>Learning isn’t about knowing everything and being smart. It is about personal growth. It is a great way to keep ourselves engaged.</p><h4 id="Shopping-for-clothes"><a href="#Shopping-for-clothes" class="headerlink" title="Shopping for clothes"></a>Shopping for clothes</h4><p>Hi, Madam, welcome to our store. Can I help you with anything?</p><p>Well, I am just looking around.</p><p>No problem. Take your time! I’ll be right there if you need me.</p><p>Thanks. Oh, this hoodie looks good. Do you have a medium for this?</p><p>Sure, let me get one for you. Here you are. The fitting room is over there.</p><p>It’s a perfect fit. I’ll take it. Is it on sale?</p><p>Yes, all the hoodies  on that rack are 30% off. It’s our end-of-season sale. Are you paying with cash or card?</p><p>Cash, please.</p>]]></content>
+    <content type="html"><![CDATA[<p>Learning is an import part of life. We learn in big and little ways, whether we realize it or not. </p><p>You are constantly learning, while reading an article, practicing a new language, making a mistake, meeting someone new, talking to a friend, watching a TV show or even asking your parents a question. All of these activities teach you something new.</p><p>Learning isn’t about knowing everything and being smart. It is about personal growth. It is a great way to keep ourselves engaged.</p><hr><h4 id="Shopping-for-clothes"><a href="#Shopping-for-clothes" class="headerlink" title="Shopping for clothes"></a>Shopping for clothes</h4><p>Hi, Madam, welcome to our store. Can I help you with anything?</p><p>Well, I am just looking around.</p><p>No problem. Take your time! I’ll be right there if you need me.</p><p>Thanks. Oh, this hoodie looks good. Do you have a medium for this?</p><p>Sure, let me get one for you. Here you are. The fitting room is over there.</p><p>It’s a perfect fit. I’ll take it. Is it on sale?</p><p>Yes, all the hoodies  on that rack are 30% off. It’s our end-of-season sale. Are you paying with cash or card?</p><p>Cash, please.</p>]]></content>
     
     
     <categories>
@@ -143,7 +130,7 @@
   
   
   <entry>
-    <title>webpack与vite</title>
+    <title>webpack与vite的区别</title>
     <link href="/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E4%B8%8Evite/"/>
     <url>/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E4%B8%8Evite/</url>
     
@@ -172,7 +159,7 @@
     <link href="/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/"/>
     <url>/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><strong>强缓存</strong>：只要浏览器判断缓存没过期，则直接使用浏览器的本地缓存，决定是否使用缓存的主动性在浏览器这边。</p><p>Cache-control: 相对时间，优先级高</p><p>expires: 绝对时间</p><p><strong>协商缓存</strong>：服务端告诉客户端是否可以使用缓存</p><p>Last-modified + If-modified-since:  基于时间实现</p><p>Etag+If-none-match:  基于一个唯一的标识实现，优先级更高</p><blockquote><p>注意：协商缓存的这两个字段都需要配合强制缓存来使用。只有在未命中强制缓存的时候，才能发起带有协商缓存字段的请求。</p></blockquote>]]></content>
     
     
     <categories>
@@ -310,7 +297,7 @@
     
     <tags>
       
-      <tag>bind</tag>
+      <tag>vue插件</tag>
       
     </tags>
     
@@ -335,7 +322,7 @@
     
     <tags>
       
-      <tag>bind</tag>
+      <tag>nextTick</tag>
       
     </tags>
     
@@ -348,7 +335,7 @@
     <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/"/>
     <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/</url>
     
-    <content type="html"><![CDATA[<h4 id="手写要点："><a href="#手写要点：" class="headerlink" title="手写要点："></a>手写要点：</h4><p>1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来)</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args1</span>) &#123;<br>    <span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">this</span>;<br><br>    <span class="hljs-keyword">let</span> resultFn = <span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)&#123;<br>        self.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span> <span class="hljs-keyword">instanceof</span> resultFn ? <span class="hljs-variable language_">this</span> : context, ...args1, ...args2);<br>    &#125;<br><br>    <span class="hljs-comment">// resultFn.prototype = self.prototype; 修改了resultFn的原型后，直接修改了绑定函数的prototype</span><br>    <span class="hljs-keyword">let</span> fnNo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>();<br>    fnNo.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = self.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br>    resultFn.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">fnNo</span>();<br><br>    <span class="hljs-keyword">return</span> resultFn;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>ES5引入bind的真正目的是为了弥补call&#x2F;apply的不足。由于call&#x2F;apply会对目标函数自动执行，从而导致它无法在事件绑定函数中使用。因为事件绑定函数不需要我们自己手动执行，它是在事件被触发时由JS内部自动执行的。而bind在实现改变函数this的同时又不会自动执行目标函数，因此可以完美解决事件绑定函数的问题。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;button&#x27;</span>);<br>btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-variable language_">this</span>.<span class="hljs-property">disabled</span> = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-variable language_">this</span>.<span class="hljs-property">disabled</span> = <span class="hljs-literal">false</span>;<br>&#125;.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>), <span class="hljs-number">3000</span>)<br>&#125;<br><br>btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-variable language_">this</span>.<span class="hljs-property">disabled</span> = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span>&#123;<br><span class="hljs-variable language_">this</span>.<span class="hljs-property">disabled</span> = <span class="hljs-literal">false</span>;<br>&#125;, <span class="hljs-number">3000</span>)<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="手写要点："><a href="#手写要点：" class="headerlink" title="手写要点："></a>手写要点：</h4><p>1.返回一个函数 2. 能够接收参数 3. 能够支持作为构造函数调用(new方式调用时，this的指向不再是传入的context, 返回函数的原型链也要和绑定函数的原型链关联起来)</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">bind</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">context, ...args1</span>) &#123;<br>    <span class="hljs-keyword">const</span> self = <span class="hljs-variable language_">this</span>;<br><br>    <span class="hljs-keyword">let</span> resultFn = <span class="hljs-keyword">function</span>(<span class="hljs-params">...args2</span>)&#123;<br>        self.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span> <span class="hljs-keyword">instanceof</span> resultFn ? <span class="hljs-variable language_">this</span> : context, ...args1, ...args2);<br>    &#125;<br><br>    <span class="hljs-comment">// resultFn.prototype = self.prototype; 修改了resultFn的原型后，直接修改了绑定函数的prototype</span><br>    <span class="hljs-keyword">let</span> fnNo = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Function</span>();<br>    fnNo.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = self.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>;<br>    resultFn.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">fnNo</span>();<br><br>    <span class="hljs-keyword">return</span> resultFn;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
@@ -361,6 +348,31 @@
     <tags>
       
       <tag>bind</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>手写系列-call, apply</title>
+    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/"/>
+    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/</url>
+    
+    <content type="html"><![CDATA[<h5 id="call-apply-bind-的区别"><a href="#call-apply-bind-的区别" class="headerlink" title="call, apply, bind 的区别"></a>call, apply, bind 的区别</h5><ol><li>call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。</li><li>apply的参数是一个数组， call 和bind的参数是一个个传入。</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Xiaoxiao&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayName</span>(<span class="hljs-params">age</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`this is my name:<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, age:<span class="hljs-subst">$&#123;age&#125;</span>`</span>);<br>&#125;<br><br>sayName.<span class="hljs-title function_">myCall</span>(person); <span class="hljs-comment">// </span><br>sayName.<span class="hljs-title function_">call</span>(person); <span class="hljs-comment">// </span><br><br><span class="hljs-comment">// 实现call</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](...args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 实现apply</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myApply</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>call, apply</tag>
       
     </tags>
     
@@ -394,31 +406,6 @@
   
   
   <entry>
-    <title>手写系列-call, apply</title>
-    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/"/>
-    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/</url>
-    
-    <content type="html"><![CDATA[<h5 id="call-apply-bind-的区别"><a href="#call-apply-bind-的区别" class="headerlink" title="call, apply, bind 的区别"></a>call, apply, bind 的区别</h5><blockquote><ol><li>call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。</li><li>apply的参数是一个数组， call 和bind的参数是一个个传入。</li></ol></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Xiaoxiao&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayName</span>(<span class="hljs-params">age</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`this is my name:<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, age:<span class="hljs-subst">$&#123;age&#125;</span>`</span>);<br>&#125;<br><br>sayName.<span class="hljs-title function_">myCall</span>(person); <span class="hljs-comment">// </span><br>sayName.<span class="hljs-title function_">call</span>(person); <span class="hljs-comment">// </span><br><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](...args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myApply</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>手写系列</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>call, apply</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>手写系列-new</title>
     <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20new/"/>
     <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20new/</url>
@@ -435,7 +422,7 @@
     
     <tags>
       
-      <tag>new</tag>
+      <tag>new实现</tag>
       
     </tags>
     
