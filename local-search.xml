@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>TCP连接之三次握手</title>
+    <link href="/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
+    <url>/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
+    
+    <content type="html"><![CDATA[<h4 id="TCP报文中比较重要的字段"><a href="#TCP报文中比较重要的字段" class="headerlink" title="TCP报文中比较重要的字段"></a>TCP报文中比较重要的字段</h4><ol><li><p>序列号(sequence number): 解决网络中乱序的问题</p></li><li><p>确认应答号（acknowledgement number): 解决网络中丢包的问题</p></li><li><p>标志位（flags)</p><p>ACK: 确认序号有效</p><p>SYN: 发起一个连接</p><p>FIN: 释放一个连接</p><p>RST: 重置一个连接</p><p>PSH: 接收方应该尽快将这个报文发给应用层</p><p>URG: 紧急指针（urgent pointer)</p><p><img src="D:\学习\Blog\img\TCP头部.png"></p></li></ol><h4 id="三次握手的过程："><a href="#三次握手的过程：" class="headerlink" title="三次握手的过程："></a>三次握手的过程：</h4><p>客户端状态：CLOSED, SYN-SENT, ESTABLISHED</p><p>服务端状态：LISTENING, SYN-SENT, ESTABLISHED</p><p>一开始，双方都处于close状态，先是接收端监听某个端口，进入listen状态</p><p><strong>第一次握手：</strong></p><p>⼀开始，客户端和服务端都处于 CLOSED 状态。</p><p><strong>服务端</strong>：主动监听某个端⼝，处于 LISTEN 状态。<br><strong>客户端</strong>：随机初始化序号（ client_isn ），将此序号置于 TCP ⾸部的「序号」字段中，同时把<br>SYN 标志位置为 1 ，表示 SYN 报⽂。接着把第⼀个 SYN 报⽂发送给服务端，表示向服务端发起连接，该报⽂不包含应⽤层数据，之后客户端处于 SYN-SENT 状态。</p><p><strong>第二次握手：</strong><br><strong>服务端</strong>：在收到客户端的 SYN 报⽂后，服务端也随机初始化⾃⼰的序号（ server_isn ），将此序号填⼊TCP ⾸部的「序号」字段中，其次把 TCP ⾸部的「确认应答号」字段填⼊ client_isn + 1 , 接着把SYN和 ACK 标志位置为 1 。最后把该报⽂发给客户端，该报⽂也不包含应⽤层数据，之后服务端处于SYN-RCVD 状态。</p><p><strong>第三次握手：</strong><br><strong>客户端</strong>：在收到服务端报⽂后，还要向服务端回应最后⼀个应答报⽂，⾸先该应答报⽂ TCP ⾸部 ACK标志位置为 1 ，其次「确认应答号」字段填⼊ server_isn + 1 ，最后把报⽂发送给服务端，这次报⽂可以携带客户到服务器的数据，之后客户端处于 ESTABLISHED 状态。<br><strong>服务端</strong>：收到客户端的应答报⽂后，也进⼊ ESTABLISHED 状态。 </p><blockquote><p>注意：第三次握手时可以携带数据的，因为发送端已经确认了服务端有接收和发送能力，而前两次并没有确认对方的接收能力。</p></blockquote><p><img src="D:\学习\Blog\img\三次握手.png"></p><h4 id="为什么要三次握手："><a href="#为什么要三次握手：" class="headerlink" title="为什么要三次握手："></a>为什么要三次握手：</h4><ol><li>因为有超时重传机制的存在，要防止已失效的连接请求报文段又突然传送到了服务端，造成混乱</li><li>为了防止服务器端开启一些无用的连接增加服务器开销</li><li>为了同步两端的初始化序列号</li></ol><p>假如发送端发送了一个序列号为90的syn报文，此时网络拥塞，发送端可能会连续发送多次请求，有发送了一个序列号为100的syn报文。网络恢复，服务端先收到了序列号为90的syn报文，然后就会给发送端发送ackNumber &#x3D; 90 +1, syn&#x3D;***的报文。发送端接收到后，通过上下文判断，发现自己期望收到的ackNumber应该是100+1，而不是90+1， 就会判断出这是一个历史连接，从而发起RST报文终止连接。</p><p>客户端第一次握手的时候，可能经历网络拥塞，客户端以为这个连接已经丢失，之后重新发送一个请求连接的报文到服务器。当第一个请求在连接释放后的某个时间到达服务器，如果是使用二次握手，这时候服务器发送确认数据包给客户端，新的连接就建立了。但是由于客户端这时候没有发送连接请求，所以它不会理睬服务端的确认，也不会跟服务端通信，而这时的服务器会一直等待客户端发送数据，这样服务器就开启了无效连接，浪费了资源。</p><p><img src="D:\学习\Blog\img\三次握手-1.png"></p><p>在三次握手的机制下，<strong>客户端就可以根据确认应答号判断所接受到的ACK+SYN报文是不是历史连接</strong>，并根据是否为历史连接做出不同的应答。</p><p>如果是历史连接，则第三次握⼿发送的报⽂是 RST 报⽂，以此中⽌历史连接；<br>如果不是历史连接，则第三次发送的报⽂是 ACK 报⽂，通信双⽅就会成功建⽴连接；</p><p>还有一个原因，那就是<strong>客户端和服务端要同步双方的初始序列号</strong>。</p><p>所以，两次握手无法防止历史连接的建立，会造成资源浪费，而且不能同步双方的序列号。四次握手只会造成更多的连接延时。</p><h4 id="握手时报文丢失怎么办？"><a href="#握手时报文丢失怎么办？" class="headerlink" title="握手时报文丢失怎么办？"></a>握手时报文丢失怎么办？</h4><p><strong>第一次握手syn丢失</strong>：</p><p>客户端迟迟收不到ack+syn的报文，就会触发超时重传机制。每次超时重传的时间呈指数倍上涨，知道发送5次后，就不会发送syn包了（由tcp_syn_tries参数指定）。</p><p><strong>第二次握手syn+ack丢失：</strong></p><p>客户端无法收到syn+ack报文，就会以为自己没有发送出去，也就相当于第一次握手时的重传一样。</p><p>服务端无法收到ack应答报文，也一样会重发syn+ack报文，如果下一次客户端重发的syn报文到了，服务端会再次发送ack+syn报文，但计时器不会重置，还在继续重传。因为服务端在没有收到第三次握手时，会持续重传到最大次数，默认为5次（由tcp_syn_tries参数指定）。</p><p><strong>第三次握手ack丢失：</strong></p><p>服务端没有收到ack报文，会重传syn+ack到最大次数，此时服务端的连接终止了。</p><p>客户端收到syn+ack报文后，进入established状态。之后发送数据，但是服务器已经处于断开连接的状态了，所以客户端重传数据包到最大次数后，也断开了连接。客户端重传数据默认为15次，由tcp_retries2参数指定。</p><p><strong>但是如果客户端不发送数据，什么时候能断开连接呢？</strong></p><p>TCP有一个保活机制，如果一段时间内，双方都没有发送数据，那么TCP隔一段时间就会发送探测报文，如果连续几个探测报文都没有得到响应，则认为连接已经死亡，会断开连接。</p><p>net.ipv4.tcp_keepalive_time &#x3D; 7200: 表示保活时间是7200秒，也就是2小时内如果没有任何连接相关的活动，就会启动保活机制。</p><p>net.ipv4.tcp_keepalive_intvl &#x3D; 75: 表示每次检测间隔时间75秒</p><p>net.ipv4.tcp_keepalive_probes&#x3D;9: 表示检测9次无响应，认为对方是不可达的，从而中断本次的连接</p><h4 id="TCP-快速连接"><a href="#TCP-快速连接" class="headerlink" title="TCP 快速连接"></a>TCP 快速连接</h4><p>客户端向服务端发起http get请求时，一个完整的交互需要2.5个RTT, 如果第三次握手携带数据的话，也需要2个RTT.</p><p>如果开启tcp快速连接，可以减少握手的时延，虽然第一次握手还是2个RTT，但是后面在cookie过期之前握手都只需要1个RTT.</p><h4 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h4><p>在三次握手的过程中，服务器发送syn+ack包后，收到客户端的ack之前的连接称为半连接（half-open connect)。此时服务器处于syn-rcvd状态。</p><p>SYN攻击是指， 攻击客户端在短时间内伪造大量不存在的ip地址，向服务器不断发送syn包，服务器回复ack包，并等待客户端的确认。由于源地址是不存在的，服务器需要不断地重发甚至超时，这些伪造地syn包将长时间占用半连接队列，正常的syn请求被丢弃，导致目标系统运行缓慢，严重者会引起网络阻塞甚至系统瘫痪。</p><h4 id="如何检测SYN攻击"><a href="#如何检测SYN攻击" class="headerlink" title="如何检测SYN攻击"></a>如何检测SYN攻击</h4><p>当在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次syn攻击。在linux、unix系统上可以用系统自带的netstat命令来检测syn攻击。</p><h4 id="如何防御SYN攻击"><a href="#如何防御SYN攻击" class="headerlink" title="如何防御SYN攻击"></a>如何防御SYN攻击</h4><ol><li>缩短超时时间（syn timeout)</li><li>增加最大半连接数</li><li>过滤网关防护</li><li>SYN cookies技术</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>TCP系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>三次握手, syn攻击</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BFC</title>
+    <link href="/2022/10/29/BFC/"/>
+    <url>/2022/10/29/BFC/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>English-02</title>
     <link href="/2022/10/27/English-02/"/>
     <url>/2022/10/27/English-02/</url>
@@ -147,31 +185,6 @@
     <tags>
       
       <tag>vite, webpack</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>浏览器缓存</title>
-    <link href="/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/"/>
-    <url>/2022/10/19/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/</url>
-    
-    <content type="html"><![CDATA[<p><strong>强缓存</strong>：只要浏览器判断缓存没过期，则直接使用浏览器的本地缓存，决定是否使用缓存的主动性在浏览器这边。</p><p>Cache-control: 相对时间，优先级高</p><p>expires: 绝对时间</p><p><strong>协商缓存</strong>：服务端告诉客户端是否可以使用缓存</p><p>Last-modified + If-modified-since:  基于时间实现</p><p>Etag+If-none-match:  基于一个唯一的标识实现，优先级更高</p><blockquote><p>注意：协商缓存的这两个字段都需要配合强制缓存来使用。只有在未命中强制缓存的时候，才能发起带有协商缓存字段的请求。</p></blockquote>]]></content>
-    
-    
-    <categories>
-      
-      <category>浏览器系列</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>缓存</tag>
       
     </tags>
     
