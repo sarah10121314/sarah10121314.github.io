@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>English-03</title>
+    <link href="/2022/10/29/English-03/"/>
+    <url>/2022/10/29/English-03/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Poor-connection"><a href="#Poor-connection" class="headerlink" title="Poor connection"></a>Poor connection</h4><p>Hi, everyone. Let’s give some warm greetings to our new member, Alice.</p><p>Hi, everyone. I am Alice. I am looking forward to working with you guys.</p><p>Hi, Alice. Welcome on board.</p><p>Terrific. Alice, Julia will help you set up on our online system and your company email account.</p><p>I am sorry, I got cut off just now. What else do I  need to help Alice with beside the on-line system?</p><p>Our company email account.</p><p>Sure, will do.</p><p>Perfect. Let’s wrap up this meeting and get back to work.</p><hr><h4 id="See-a-doctor"><a href="#See-a-doctor" class="headerlink" title="See a doctor"></a>See a doctor</h4><p>Hi, do you have an appointment?</p><p>Yes, at 10 am. My last name is Smith.</p><p>Let me check. Well, Ms smith, please come with me. I am gonna take your vitals.</p><p>Good, everything look fine. Doctor Miller is waiting for you in room three.</p><p>Hi, Ms Smith. Could you explain your symptoms?</p><p>I had a sharp pain in my stomach yesterday. I took some pain killers, but I have no appetite.</p><p>And I am feeling nauseous.</p><p>What did you have before the pain?</p><p>I have some lobster. But it tasted funny. </p><p>The lobster must gone bad. You are having a stomach flu but not a serious one. So there is no need to get a shot.  I will prescribe some medicine. You can get them in the drug store. Remember to take the pills on time and you will be fine shortly.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>English Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>poor connection</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>TCP和UDP的区别</title>
+    <link href="/2022/10/29/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2022/10/29/TCP%E5%92%8CUDP%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>TCP系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>UDP, TCP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>TCP连接之三次握手</title>
     <link href="/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
     <url>/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
@@ -33,7 +83,7 @@
     <link href="/2022/10/29/BFC/"/>
     <url>/2022/10/29/BFC/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h4 id="BFC-IFC-GFC-FFC"><a href="#BFC-IFC-GFC-FFC" class="headerlink" title="BFC, IFC, GFC, FFC"></a>BFC, IFC, GFC, FFC</h4><p>BFC: Block formatting context 块级格式化上下文</p><p>IFC: Inline formatting context 内联格式化上下文</p><p>GFC: Gridlayout formatting context 网格布局格式化上下文</p><p>FFC: Flex formatting context 自适应格式化上下文</p><h4 id="BFC的特性："><a href="#BFC的特性：" class="headerlink" title="BFC的特性："></a>BFC的特性：</h4><ol><li>属于同一个BFC的两个相邻容器的margin会重叠</li><li>计算BFC高度时，浮动元素也会参与计算</li><li>BFC的区域不会与浮动容器发生重叠</li></ol><h4 id="触发BFC的条件："><a href="#触发BFC的条件：" class="headerlink" title="触发BFC的条件："></a>触发BFC的条件：</h4><ol><li>position: absolute或者fixed</li><li>float: left&#x2F;right</li><li>overflow: 不为visible</li><li>display: inline-block, flex, inline-flex, table-cell, table-caption</li></ol><h4 id="应用场景："><a href="#应用场景：" class="headerlink" title="应用场景："></a>应用场景：</h4><ol><li>解决margin叠加问题 (使其处于不同的BFC便不会重叠)</li><li>子元素设置float，父元素高度塌陷 (父元素设置overflow:hidden触发BFC)</li><li>左右两栏布局，左边元素浮动，右边元素与左侧元素发生重叠（右侧元素设置overflow:hidden, 触发BFC)</li></ol>]]></content>
     
     
     <categories>
