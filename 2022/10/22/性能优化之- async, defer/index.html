@@ -16,24 +16,24 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne">
+    <meta name="description" content="script 标签内没有async或defer时:   当浏览器碰到 script 脚本的时候, 如果没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。  script标签内设置async时：   script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue源码-Vue.use">
-<meta property="og:url" content="http://example.com/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/index.html">
+<meta property="og:title" content="async 和 defer">
+<meta property="og:url" content="http://example.com/2022/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B-%20async,%20defer/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne">
+<meta property="og:description" content="script 标签内没有async或defer时:   当浏览器碰到 script 脚本的时候, 如果没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。  script标签内设置async时：   script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.wallpaperhub.app/cloudcache/3/7/c/2/4/3/37c243cce6271e18cffd39f1de6d2e1338c353d8.jpg">
-<meta property="article:published_time" content="2022-10-16T07:32:51.000Z">
-<meta property="article:modified_time" content="2022-10-28T13:30:19.985Z">
+<meta property="og:image" content="https://cdn.wallpaperhub.app/cloudcache/0/2/7/1/0/f/02710f8ea0eb4b0941d0f8af15b3d99951a057ff.jpg">
+<meta property="article:published_time" content="2022-10-22T03:42:52.000Z">
+<meta property="article:modified_time" content="2022-10-22T04:09:19.792Z">
 <meta property="article:author" content="Sarah">
-<meta property="article:tag" content="vue插件">
+<meta property="article:tag" content="defer, async">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.wallpaperhub.app/cloudcache/3/7/c/2/4/3/37c243cce6271e18cffd39f1de6d2e1338c353d8.jpg">
+<meta name="twitter:image" content="https://cdn.wallpaperhub.app/cloudcache/0/2/7/1/0/f/02710f8ea0eb4b0941d0f8af15b3d99951a057ff.jpg">
   
   
   
-  <title>Vue源码-Vue.use - 童话镇</title>
+  <title>async 和 defer - 童话镇</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">Vue源码-Vue.use</span>
+            <span id="subtitle">async 和 defer</span>
           
         </div>
 
@@ -200,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-16 15:32" pubdate>
-          2022年10月16日 下午
+        <time datetime="2022-10-22 11:42" pubdate>
+          2022年10月22日 中午
         </time>
       </span>
     
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          433 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          10 分钟
+          4 分钟
         
       </span>
     
@@ -261,23 +261,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vue源码-Vue.use</h1>
+            <h1 style="display: none">async 和 defer</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p>
-<ol>
-<li>如果插件是一个对象，必须提供install方法。</li>
-<li>如果插件是一个函数，它会被作为install方法。</li>
-<li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li>
-<li>需要在new Vue()之前调用</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <p><strong>script 标签内没有async或defer时:</strong></p>
+<script src="script.js"></script>
 
-<blockquote>
-<p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p>
-</blockquote>
+<p>当浏览器碰到 script 脚本的时候, 如果没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</p>
+<hr>
+<p><strong>script标签内设置async时：</strong></p>
+<script async src="script.js"></script>
+
+<p>script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲染，当script脚本加载完毕后，script脚本会立即执行，此时会阻塞HTML代码的解析和渲染，并且是哪个先下载完执行哪个;</p>
+<hr>
+<p><strong>script标签设置defer时：</strong></p>
+<script defer src="myscript.js"></script>
+
+<p> script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲染，当script脚本加载完毕后，script脚本不会立即执行，会被延迟到整个页面加载完毕后在按照顺序再执行；</p>
+<hr>
+<p><strong>defer是“渲染完再执行”，async是“下载完就执行”。</strong>如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的；</p>
 
                 
               </div>
@@ -296,7 +300,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="category-chain-item">Vue源码解析</a>
+  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="category-chain-item">性能优化</a>
   
   
 
@@ -311,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/vue%E6%8F%92%E4%BB%B6/">#vue插件</a>
+        <a href="/tags/defer-async/">#defer, async</a>
       
     </div>
   
@@ -323,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue源码-Vue.use</div>
-      <div>http://example.com/2022/10/16/Vue系列之- Vue.use/</div>
+      <div>async 和 defer</div>
+      <div>http://example.com/2022/10/22/性能优化之- async, defer/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月16日</div>
+          <div>2022年10月22日</div>
         </div>
       
       
@@ -368,9 +372,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/" title="webpack基础">
+                      <a href="/2022/10/23/English-01/" title="Learning &amp;&amp; shopping">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">webpack基础</span>
+                        <span class="hidden-mobile">Learning &amp;&amp; shopping</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -378,8 +382,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" title="Vue源码-nextTick">
-                        <span class="hidden-mobile">Vue源码-nextTick</span>
+                      <a href="/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E4%B8%8Evite/" title="webpack与vite的区别">
+                        <span class="hidden-mobile">webpack与vite的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

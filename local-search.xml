@@ -4,6 +4,96 @@
   
   
   <entry>
+    <title>prototype</title>
+    <link href="/2022/10/30/prototype/"/>
+    <url>/2022/10/30/prototype/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><br><span class="hljs-title class_">Array</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-title class_">String</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-title class_">Boolean</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-title class_">Funtion</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><span class="hljs-title class_">Object</span>.<span class="hljs-property">__proto__</span> === <span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span><br><br><span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">__proto__</span> === <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure><h4 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h4><p>Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。</p><p>如果参数为空(或者为undefined和null)，Object()返回一个空对象。</p><p>如果参数是原始类型的值，Object方法将其转为对应的包装对象。</p><p>如果参数是一个对象，它总是返回该对象，即不用转换。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isObject</span>(<span class="hljs-params">value</span>) &#123;    <br>    <span class="hljs-keyword">return</span> value === <span class="hljs-title class_">Object</span>(value); <br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>prototype</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>prototype</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>HTTP1.0+HTTP1.1+HTTP2.0+HTTP3.0</title>
+    <link href="/2022/10/30/HTTP%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E5%8C%BA%E5%88%AB/"/>
+    <url>/2022/10/30/HTTP%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>EventEmitter</title>
+    <link href="/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20EventEmitter/"/>
+    <url>/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20EventEmitter/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>curry</title>
+    <link href="/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20curry/"/>
+    <url>/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20curry/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>浏览器系列之-垃圾回收</title>
+    <link href="/2022/10/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    <url>/2022/10/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>promise</title>
+    <link href="/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20promise/"/>
+    <url>/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20promise/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>English-03</title>
     <link href="/2022/10/29/English-03/"/>
     <url>/2022/10/29/English-03/</url>
@@ -58,7 +148,7 @@
     <link href="/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
     <url>/2022/10/29/TCP%E8%BF%9E%E6%8E%A5%E4%B9%8B%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
     
-    <content type="html"><![CDATA[<h4 id="TCP报文中比较重要的字段"><a href="#TCP报文中比较重要的字段" class="headerlink" title="TCP报文中比较重要的字段"></a>TCP报文中比较重要的字段</h4><ol><li><p>序列号(sequence number): 解决网络中乱序的问题</p></li><li><p>确认应答号（acknowledgement number): 解决网络中丢包的问题</p></li><li><p>标志位（flags)</p><p>ACK: 确认序号有效</p><p>SYN: 发起一个连接</p><p>FIN: 释放一个连接</p><p>RST: 重置一个连接</p><p>PSH: 接收方应该尽快将这个报文发给应用层</p><p>URG: 紧急指针（urgent pointer)</p><p><img src="D:\学习\Blog\img\TCP头部.png"></p></li></ol><h4 id="三次握手的过程："><a href="#三次握手的过程：" class="headerlink" title="三次握手的过程："></a>三次握手的过程：</h4><p>客户端状态：CLOSED, SYN-SENT, ESTABLISHED</p><p>服务端状态：LISTENING, SYN-SENT, ESTABLISHED</p><p>一开始，双方都处于close状态，先是接收端监听某个端口，进入listen状态</p><p><strong>第一次握手：</strong></p><p>⼀开始，客户端和服务端都处于 CLOSED 状态。</p><p><strong>服务端</strong>：主动监听某个端⼝，处于 LISTEN 状态。<br><strong>客户端</strong>：随机初始化序号（ client_isn ），将此序号置于 TCP ⾸部的「序号」字段中，同时把<br>SYN 标志位置为 1 ，表示 SYN 报⽂。接着把第⼀个 SYN 报⽂发送给服务端，表示向服务端发起连接，该报⽂不包含应⽤层数据，之后客户端处于 SYN-SENT 状态。</p><p><strong>第二次握手：</strong><br><strong>服务端</strong>：在收到客户端的 SYN 报⽂后，服务端也随机初始化⾃⼰的序号（ server_isn ），将此序号填⼊TCP ⾸部的「序号」字段中，其次把 TCP ⾸部的「确认应答号」字段填⼊ client_isn + 1 , 接着把SYN和 ACK 标志位置为 1 。最后把该报⽂发给客户端，该报⽂也不包含应⽤层数据，之后服务端处于SYN-RCVD 状态。</p><p><strong>第三次握手：</strong><br><strong>客户端</strong>：在收到服务端报⽂后，还要向服务端回应最后⼀个应答报⽂，⾸先该应答报⽂ TCP ⾸部 ACK标志位置为 1 ，其次「确认应答号」字段填⼊ server_isn + 1 ，最后把报⽂发送给服务端，这次报⽂可以携带客户到服务器的数据，之后客户端处于 ESTABLISHED 状态。<br><strong>服务端</strong>：收到客户端的应答报⽂后，也进⼊ ESTABLISHED 状态。 </p><blockquote><p>注意：第三次握手时可以携带数据的，因为发送端已经确认了服务端有接收和发送能力，而前两次并没有确认对方的接收能力。</p></blockquote><p><img src="D:\学习\Blog\img\三次握手.png"></p><h4 id="为什么要三次握手："><a href="#为什么要三次握手：" class="headerlink" title="为什么要三次握手："></a>为什么要三次握手：</h4><ol><li>因为有超时重传机制的存在，要防止已失效的连接请求报文段又突然传送到了服务端，造成混乱</li><li>为了防止服务器端开启一些无用的连接增加服务器开销</li><li>为了同步两端的初始化序列号</li></ol><blockquote><p>分两种情况：失效的报文到达的时候，连接还未断开和连接已经断开</p></blockquote><p>假如发送端发送了一个序列号为90的syn报文，此时网络拥塞，发送端可能会连续发送多次请求，有发送了一个序列号为100的syn报文。网络恢复，服务端先收到了序列号为90的syn报文，然后就会给发送端发送ackNumber &#x3D; 90 +1, syn&#x3D;***的报文。发送端接收到后，通过上下文判断，发现自己期望收到的ackNumber应该是100+1，而不是90+1， 就会判断出这是一个历史连接，从而发起RST报文终止连接。</p><p>客户端第一次握手的时候，可能经历网络拥塞，客户端以为这个连接已经丢失，之后重新发送一个请求连接的报文到服务器。当第一个请求在<strong>连接释放后</strong>的某个时间到达服务器，如果是使用二次握手，这时候服务器发送确认数据包给客户端，新的连接就建立了。但是由于客户端这时候没有发送连接请求，所以它不会理睬服务端的确认，也不会跟服务端通信，而这时的服务器会一直等待客户端发送数据，这样服务器就开启了无效连接，浪费了资源。</p><p><img src="D:\学习\Blog\img\三次握手-1.png"></p><p>在三次握手的机制下，<strong>客户端就可以根据确认应答号判断所接受到的ACK+SYN报文是不是历史连接</strong>，并根据是否为历史连接做出不同的应答。</p><p>如果是历史连接，则第三次握⼿发送的报⽂是 RST 报⽂，以此中⽌历史连接；<br>如果不是历史连接，则第三次发送的报⽂是 ACK 报⽂，通信双⽅就会成功建⽴连接；</p><p>还有一个原因，那就是<strong>客户端和服务端要同步双方的初始序列号</strong>。</p><p>所以，两次握手无法防止历史连接的建立，会造成资源浪费，而且不能同步双方的序列号。四次握手只会造成更多的连接延时。</p><h4 id="握手时报文丢失怎么办？"><a href="#握手时报文丢失怎么办？" class="headerlink" title="握手时报文丢失怎么办？"></a>握手时报文丢失怎么办？</h4><p><strong>第一次握手syn丢失</strong>：</p><p>客户端迟迟收不到ack+syn的报文，就会触发超时重传机制。每次超时重传的时间呈指数倍上涨，知道发送5次后，就不会发送syn包了（由tcp_syn_tries参数指定）。</p><p><strong>第二次握手syn+ack丢失：</strong></p><p>客户端无法收到syn+ack报文，就会以为自己没有发送出去，也就相当于第一次握手时的重传一样。</p><p>服务端无法收到ack应答报文，也一样会重发syn+ack报文，如果下一次客户端重发的syn报文到了，服务端会再次发送ack+syn报文，但计时器不会重置，还在继续重传。因为服务端在没有收到第三次握手时，会持续重传到最大次数，默认为5次（由tcp_syn_tries参数指定）。</p><p><strong>第三次握手ack丢失：</strong></p><p>服务端没有收到ack报文，会重传syn+ack到最大次数，此时服务端的连接终止了。</p><p>客户端收到syn+ack报文后，进入established状态。之后发送数据，但是服务器已经处于断开连接的状态了，所以客户端重传数据包到最大次数后，也断开了连接。客户端重传数据默认为15次，由tcp_retries2参数指定。</p><p><strong>但是如果客户端不发送数据，什么时候能断开连接呢？</strong></p><p>TCP有一个保活机制，如果一段时间内，双方都没有发送数据，那么TCP隔一段时间就会发送探测报文，如果连续几个探测报文都没有得到响应，则认为连接已经死亡，会断开连接。</p><p>net.ipv4.tcp_keepalive_time &#x3D; 7200: 表示保活时间是7200秒，也就是2小时内如果没有任何连接相关的活动，就会启动保活机制。</p><p>net.ipv4.tcp_keepalive_intvl &#x3D; 75: 表示每次检测间隔时间75秒</p><p>net.ipv4.tcp_keepalive_probes&#x3D;9: 表示检测9次无响应，认为对方是不可达的，从而中断本次的连接</p><h4 id="TCP-快速连接"><a href="#TCP-快速连接" class="headerlink" title="TCP 快速连接"></a>TCP 快速连接</h4><p>客户端向服务端发起http get请求时，一个完整的交互需要2.5个RTT, 如果第三次握手携带数据的话，也需要2个RTT.</p><p>如果开启tcp快速连接，可以减少握手的时延，虽然第一次握手还是2个RTT，但是后面在cookie过期之前握手都只需要1个RTT.</p><h4 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h4><p>在三次握手的过程中，服务器发送syn+ack包后，收到客户端的ack之前的连接称为半连接（half-open connect)。此时服务器处于syn-rcvd状态。</p><p>SYN攻击是指， 攻击客户端在短时间内伪造大量不存在的ip地址，向服务器不断发送syn包，服务器回复ack包，并等待客户端的确认。由于源地址是不存在的，服务器需要不断地重发甚至超时，这些伪造地syn包将长时间占用半连接队列，正常的syn请求被丢弃，导致目标系统运行缓慢，严重者会引起网络阻塞甚至系统瘫痪。</p><h4 id="如何检测SYN攻击"><a href="#如何检测SYN攻击" class="headerlink" title="如何检测SYN攻击"></a>如何检测SYN攻击</h4><p>当在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次syn攻击。在linux、unix系统上可以用系统自带的netstat命令来检测syn攻击。</p><h4 id="如何防御SYN攻击"><a href="#如何防御SYN攻击" class="headerlink" title="如何防御SYN攻击"></a>如何防御SYN攻击</h4><ol><li>缩短超时时间（syn timeout)</li><li>增加最大半连接数</li><li>过滤网关防护</li><li>SYN cookies技术</li></ol>]]></content>
+    <content type="html"><![CDATA[<h4 id="TCP报文中比较重要的字段"><a href="#TCP报文中比较重要的字段" class="headerlink" title="TCP报文中比较重要的字段"></a>TCP报文中比较重要的字段</h4><ol><li><p>序列号(sequence number): 解决网络中乱序的问题</p></li><li><p>确认应答号（acknowledgement number): 解决网络中丢包的问题</p></li><li><p>标志位（flags)</p><p>ACK: 确认序号有效</p><p>SYN: 发起一个连接</p><p>FIN: 释放一个连接</p><p>RST: 重置一个连接</p><p>PSH: 接收方应该尽快将这个报文发给应用层</p><p>URG: 紧急指针（urgent pointer)</p><p><img src="D:\学习\Blog\img\TCP头部.png"></p></li></ol><h4 id="三次握手的过程："><a href="#三次握手的过程：" class="headerlink" title="三次握手的过程："></a>三次握手的过程：</h4><p>客户端状态：CLOSED, SYN-SENT, ESTABLISHED</p><p>服务端状态：LISTENING, SYN-SENT, ESTABLISHED</p><p>一开始，双方都处于close状态，先是接收端监听某个端口，进入listen状态</p><p><strong>第一次握手：</strong></p><p>⼀开始，客户端和服务端都处于 CLOSED 状态。</p><p><strong>服务端</strong>：主动监听某个端⼝，处于 LISTEN 状态。<br><strong>客户端</strong>：随机初始化序号（ client_isn ），将此序号置于 TCP ⾸部的「序号」字段中，同时把<br>SYN 标志位置为 1 ，表示 SYN 报⽂。接着把第⼀个 SYN 报⽂发送给服务端，表示向服务端发起连接，该报⽂不包含应⽤层数据，之后客户端处于 SYN-SENT 状态。</p><p><strong>第二次握手：</strong><br><strong>服务端</strong>：在收到客户端的 SYN 报⽂后，服务端也随机初始化⾃⼰的序号（ server_isn ），将此序号填⼊TCP ⾸部的「序号」字段中，其次把 TCP ⾸部的「确认应答号」字段填⼊ client_isn + 1 , 接着把SYN和 ACK 标志位置为 1 。最后把该报⽂发给客户端，该报⽂也不包含应⽤层数据，之后服务端处于SYN-RCVD 状态。</p><p><strong>第三次握手：</strong><br><strong>客户端</strong>：在收到服务端报⽂后，还要向服务端回应最后⼀个应答报⽂，⾸先该应答报⽂ TCP ⾸部 ACK标志位置为 1 ，其次「确认应答号」字段填⼊ server_isn + 1 ，最后把报⽂发送给服务端，这次报⽂可以携带客户到服务器的数据，之后客户端处于 ESTABLISHED 状态。<br><strong>服务端</strong>：收到客户端的应答报⽂后，也进⼊ ESTABLISHED 状态。 </p><blockquote><p>注意：第三次握手时可以携带数据的，因为发送端已经确认了服务端有接收和发送能力，而前两次并没有确认对方的接收能力。</p></blockquote><p><img src="D:\学习\Blog\img\三次握手.png"></p><h4 id="为什么要三次握手："><a href="#为什么要三次握手：" class="headerlink" title="为什么要三次握手："></a>为什么要三次握手：</h4><ol><li>因为有超时重传机制的存在，要防止已失效的连接请求报文段又突然传送到了服务端，造成混乱</li><li>为了防止服务器端开启一些无用的连接增加服务器开销</li><li>为了同步两端的初始化序列号</li></ol><blockquote><p>分两种情况：失效的报文到达的时候，连接还未断开和连接已经断开</p></blockquote><p>假如发送端发送了一个序列号为90的syn报文，此时网络拥塞，发送端可能会连续发送多次请求，有发送了一个序列号为100的syn报文。网络恢复，服务端先收到了序列号为90的syn报文，然后就会给发送端发送ackNumber &#x3D; 90 +1, syn&#x3D;***的报文。发送端接收到后，通过上下文判断，发现自己期望收到的ackNumber应该是100+1，而不是90+1， 就会判断出这是一个历史连接，从而发起RST报文终止连接。</p><p>客户端第一次握手的时候，可能经历网络拥塞，客户端以为这个连接已经丢失，之后重新发送一个请求连接的报文到服务器。当第一个请求在<strong>连接释放后</strong>的某个时间到达服务器，如果是使用二次握手，这时候服务器发送确认数据包给客户端，新的连接就建立了。但是由于客户端这时候没有发送连接请求，所以它不会理睬服务端的确认，也不会跟服务端通信，而这时的服务器会一直等待客户端发送数据，这样服务器就开启了无效连接，浪费了资源。</p><p><img src="D:/学习/Blog/img/三次握手-1.png"></p><p>在三次握手的机制下，<strong>客户端就可以根据确认应答号判断所接受到的ACK+SYN报文是不是历史连接</strong>，并根据是否为历史连接做出不同的应答。</p><p>如果是历史连接，则第三次握⼿发送的报⽂是 RST 报⽂，以此中⽌历史连接；<br>如果不是历史连接，则第三次发送的报⽂是 ACK 报⽂，通信双⽅就会成功建⽴连接；</p><p>还有一个原因，那就是<strong>客户端和服务端要同步双方的初始序列号</strong>。</p><p>所以，两次握手无法防止历史连接的建立，会造成资源浪费，而且不能同步双方的序列号。四次握手只会造成更多的连接延时。</p><h4 id="握手时报文丢失怎么办？"><a href="#握手时报文丢失怎么办？" class="headerlink" title="握手时报文丢失怎么办？"></a>握手时报文丢失怎么办？</h4><p><strong>第一次握手syn丢失</strong>：</p><p>客户端迟迟收不到ack+syn的报文，就会触发超时重传机制。每次超时重传的时间呈指数倍上涨，知道发送5次后，就不会发送syn包了（由tcp_syn_tries参数指定）。</p><p><strong>第二次握手syn+ack丢失：</strong></p><p>客户端无法收到syn+ack报文，就会以为自己没有发送出去，也就相当于第一次握手时的重传一样。</p><p>服务端无法收到ack应答报文，也一样会重发syn+ack报文，如果下一次客户端重发的syn报文到了，服务端会再次发送ack+syn报文，但计时器不会重置，还在继续重传。因为服务端在没有收到第三次握手时，会持续重传到最大次数，默认为5次（由tcp_syn_tries参数指定）。</p><p><strong>第三次握手ack丢失：</strong></p><p>服务端没有收到ack报文，会重传syn+ack到最大次数，此时服务端的连接终止了。</p><p>客户端收到syn+ack报文后，进入established状态。之后发送数据，但是服务器已经处于断开连接的状态了，所以客户端重传数据包到最大次数后，也断开了连接。客户端重传数据默认为15次，由tcp_retries2参数指定。</p><p><strong>但是如果客户端不发送数据，什么时候能断开连接呢？</strong></p><p>TCP有一个保活机制，如果一段时间内，双方都没有发送数据，那么TCP隔一段时间就会发送探测报文，如果连续几个探测报文都没有得到响应，则认为连接已经死亡，会断开连接。</p><p>net.ipv4.tcp_keepalive_time &#x3D; 7200: 表示保活时间是7200秒，也就是2小时内如果没有任何连接相关的活动，就会启动保活机制。</p><p>net.ipv4.tcp_keepalive_intvl &#x3D; 75: 表示每次检测间隔时间75秒</p><p>net.ipv4.tcp_keepalive_probes&#x3D;9: 表示检测9次无响应，认为对方是不可达的，从而中断本次的连接</p><h4 id="TCP-快速连接"><a href="#TCP-快速连接" class="headerlink" title="TCP 快速连接"></a>TCP 快速连接</h4><p>客户端向服务端发起http get请求时，一个完整的交互需要2.5个RTT, 如果第三次握手携带数据的话，也需要2个RTT.</p><p>如果开启tcp快速连接，可以减少握手的时延，虽然第一次握手还是2个RTT，但是后面在cookie过期之前握手都只需要1个RTT.</p><h4 id="SYN攻击"><a href="#SYN攻击" class="headerlink" title="SYN攻击"></a>SYN攻击</h4><p>在三次握手的过程中，服务器发送syn+ack包后，收到客户端的ack之前的连接称为半连接（half-open connect)。此时服务器处于syn-rcvd状态。</p><p>SYN攻击是指， 攻击客户端在短时间内伪造大量不存在的ip地址，向服务器不断发送syn包，服务器回复ack包，并等待客户端的确认。由于源地址是不存在的，服务器需要不断地重发甚至超时，这些伪造地syn包将长时间占用半连接队列，正常的syn请求被丢弃，导致目标系统运行缓慢，严重者会引起网络阻塞甚至系统瘫痪。</p><h4 id="如何检测SYN攻击"><a href="#如何检测SYN攻击" class="headerlink" title="如何检测SYN攻击"></a>如何检测SYN攻击</h4><p>当在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次syn攻击。在linux、unix系统上可以用系统自带的netstat命令来检测syn攻击。</p><h4 id="如何防御SYN攻击"><a href="#如何防御SYN攻击" class="headerlink" title="如何防御SYN攻击"></a>如何防御SYN攻击</h4><ol><li>缩短超时时间（syn timeout)</li><li>增加最大半连接数</li><li>过滤网关防护</li><li>SYN cookies技术</li></ol>]]></content>
     
     
     <categories>
@@ -243,8 +333,8 @@
   
   <entry>
     <title>async 和 defer</title>
-    <link href="/2022/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B-async,%20defer/"/>
-    <url>/2022/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B-async,%20defer/</url>
+    <link href="/2022/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B-%20async,%20defer/"/>
+    <url>/2022/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B-%20async,%20defer/</url>
     
     <content type="html"><![CDATA[<p><strong>script 标签内没有async或defer时:</strong></p><script src="script.js"></script><p>当浏览器碰到 script 脚本的时候, 如果没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</p><hr><p><strong>script标签内设置async时：</strong></p><script async src="script.js"></script><p>script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲染，当script脚本加载完毕后，script脚本会立即执行，此时会阻塞HTML代码的解析和渲染，并且是哪个先下载完执行哪个;</p><hr><p><strong>script标签设置defer时：</strong></p><script defer src="myscript.js"></script><p> script脚本会异步加载，在加载过程中不会阻塞HTML代码的解析和渲染，当script脚本加载完毕后，script脚本不会立即执行，会被延迟到整个页面加载完毕后在按照顺序再执行；</p><hr><p><strong>defer是“渲染完再执行”，async是“下载完就执行”。</strong>如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的；</p>]]></content>
     
@@ -268,10 +358,10 @@
   
   <entry>
     <title>webpack与vite的区别</title>
-    <link href="/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E4%B8%8Evite/"/>
-    <url>/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E4%B8%8Evite/</url>
+    <link href="/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E4%B8%8Evite/"/>
+    <url>/2022/10/21/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E4%B8%8Evite/</url>
     
-    <content type="html"><![CDATA[<p>Vite 是新一代的 JavaScript 构建工具，通过使用基于 ESM 的工作流程进行本地开发，确保开发服务器即使在处理大型 JavaScript 应用程序时也能保持快速。</p><p>webpack和vite的区别：</p><h4 id="1-启动"><a href="#1-启动" class="headerlink" title="1. 启动"></a>1. 启动</h4><hr><p><strong>webpack</strong>是先打包再启动开发服务器。webpack的构建流程简单来说，就是递归编译每一个模块文件，对于不同类型的文件使用不同的 webpack loader 进行处理：</p><p>1.先逐级递归识别依赖，构建依赖图谱</p><p>2.将代码转化成AST抽象语法树</p><p>3.在AST阶段中去处理代码</p><p>4.把AST抽象语法树变成浏览器可以识别的代码， 然后输出</p><p><img src="C:\Users\Admin\Desktop\139239-20220413135824579-927502402.png" alt="img"></p><p><strong>vite</strong>是直接启动开发服务器，然后按需编译依赖文件。Vite原理:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;./main.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure><p><strong>浏览器开始原生支持 ES 模块</strong>。每声明一个script 标签类型为 module 时，浏览器就会向服务器发起一个get请求：<a href="http://localhost:3000/src/main.js">http://localhost:3000/src/main.js</a> 请求main.js文件。当检测到内部含有import引入的包，又会对其内部的import引用发起http请求获取模块的内容文件。</p><p>vite的主要功能是通过劫持浏览器的这些请求，并进行相应的处理，然后再返回给浏览器。</p><blockquote><p>Vite首页加载时速度较慢。是因为vite使用浏览器承载部分打包与模块加载工作，因此即使开发服务器快速启动，但是浏览器也需要更多时间来下载和处理所有这些请求。</p></blockquote><p><img src="C:\Users\Admin\Desktop\139239-20220413135834497-425297286.png" alt="img"></p><h4 id="2-编译速度"><a href="#2-编译速度" class="headerlink" title="2. 编译速度"></a>2. 编译速度</h4><hr><p>vite将应用中的模块分为：</p><p><strong>依赖：</strong>通常为纯js文件, 开发时不会变动。—–使用esbuild预构建依赖。Esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍</p><p><strong>源码：</strong>通常是非js文件，如jsx, vue, css等，时常变化，且并不是所有的源码都需要同时被加载。—–Vite 以 原生 ESM 方式服务源码。这实际上是让浏览器接管了打包程序的部分工作。vite只在浏览器请求源码时对源码进行转换并按需提供源码。</p><p>Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age&#x3D;31536000,immutable 进行<em>强缓存</em>，因此一旦被缓存它们将不需要再次请求。</p><h4 id="3-HMR-hot-module-replacement"><a href="#3-HMR-hot-module-replacement" class="headerlink" title="3. HMR(hot module replacement)"></a>3. HMR(hot module replacement)</h4><hr><p>当某个模块内容改变时，vite让浏览器去重新请求该模块即可，webpack需要将该模块的所有依赖重新编译；</p><p><strong>注意：</strong></p><blockquote><p>当需要打包到生产环境时，vite使用传统的rollup进行打包，确保生产构建实现性能优化技术，如 tree-shaking、延迟加载和常见的块拆分。</p><p>所以，vite的优势是体现在开发阶段，另外，由于vite使用的是ES Module，所以代码中不可以使用CommonJs.</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>Vite 是新一代的 JavaScript 构建工具，通过使用基于 ESM 的工作流程进行本地开发，确保开发服务器即使在处理大型 JavaScript 应用程序时也能保持快速。</p><p>webpack和vite的区别：</p><h4 id="1-启动"><a href="#1-启动" class="headerlink" title="1. 启动"></a>1. 启动</h4><hr><p><strong>webpack</strong>是先打包再启动开发服务器。webpack的构建流程简单来说，就是递归编译每一个模块文件，对于不同类型的文件使用不同的 webpack loader 进行处理：</p><p>1.先逐级递归识别依赖，构建依赖图谱</p><p>2.将代码转化成AST抽象语法树</p><p>3.在AST阶段中去处理代码</p><p>4.把AST抽象语法树变成浏览器可以识别的代码， 然后输出</p><p><img src="C:\Users\Admin\Desktop\139239-20220413135824579-927502402.png" alt="img"></p><p><strong>vite</strong>是直接启动开发服务器，然后按需编译依赖文件。Vite原理:</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;./main.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure><p><strong>浏览器开始原生支持 ES 模块</strong>。每声明一个script 标签类型为 module 时，浏览器就会向服务器发起一个get请求：<a href="http://localhost:3000/src/main.js">http://localhost:3000/src/main.js</a> 请求main.js文件。当检测到内部含有import引入的包，又会对其内部的import引用发起http请求获取模块的内容文件。</p><p>vite的主要功能是通过劫持浏览器的这些请求，并进行相应的处理，然后再返回给浏览器。</p><blockquote><p>Vite首页加载时速度较慢。是因为vite使用浏览器承载部分打包与模块加载工作，因此即使开发服务器快速启动，但是浏览器也需要更多时间来下载和处理所有这些请求。</p></blockquote><p><img src="C:\Users\Admin\Desktop\139239-20220413135834497-425297286.png" alt="img"></p><h4 id="2-编译速度"><a href="#2-编译速度" class="headerlink" title="2. 编译速度"></a>2. 编译速度</h4><hr><p>vite将应用中的模块分为：</p><p><strong>依赖：</strong>通常为纯js文件, 开发时不会变动。—–使用esbuild预构建依赖。Esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍</p><p><strong>源码：</strong>通常是非js文件，如jsx, vue, css等，时常变化，且并不是所有的源码都需要同时被加载。—–Vite 以 原生 ESM 方式服务源码。这实际上是让浏览器接管了打包程序的部分工作。vite只在浏览器请求源码时对源码进行转换并按需提供源码。</p><p>Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age&#x3D;31536000,immutable 进行<em>强缓存</em>，因此一旦被缓存它们将不需要再次请求。</p><h6 id="Javascript-和go"><a href="#Javascript-和go" class="headerlink" title="Javascript 和go"></a>Javascript 和go</h6><p>Javascript 程序每次执行都需要先由解释器一边将源码翻译成机器语言，一边调度执行；而Go是一种编译型语言，在编译阶段就已经将源码转译成机器码，启动时只需要直接执行这些机器码即可。也就意味着，Go语言编写的程序比javascript少了一个动态解释的过程。</p><p>javascript本质上是一门单线程语言，直到引入webworker规范之后才有可能在浏览器，node中实现多线程操作。Go天生具有多线程运行能力，打包过程的解析，代码生成阶段已经实现完全并行处理。</p><p>Go语言多个线程之间还能共享相同的内存空间，而javascript的每个线程都有自己独有的内存堆。这意味着Go中多个处理单元，例如解析资源A的线程，可以直接读取资源B线程的运行结果，而在javascript中相同的操作需要调用通讯接口worker.postMessage在线程间复制数据。</p><h4 id="3-HMR-hot-module-replacement"><a href="#3-HMR-hot-module-replacement" class="headerlink" title="3. HMR(hot module replacement)"></a>3. HMR(hot module replacement)</h4><hr><p>当某个模块内容改变时，vite让浏览器去重新请求该模块即可，webpack需要将该模块的所有依赖重新编译；</p><p><strong>注意：</strong></p><blockquote><p>当需要打包到生产环境时，vite使用传统的rollup进行打包，确保生产构建实现性能优化技术，如 tree-shaking、延迟加载和常见的块拆分。</p><p>所以，vite的优势是体现在开发阶段，另外，由于vite使用的是ES Module，所以代码中不可以使用CommonJs.</p></blockquote>]]></content>
     
     
     <categories>
@@ -393,11 +483,11 @@
   
   
   <entry>
-    <title>webpack原理</title>
-    <link href="/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E5%8E%9F%E7%90%86/"/>
-    <url>/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-webpack%E5%8E%9F%E7%90%86/</url>
+    <title>webpack基础</title>
+    <link href="/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/"/>
+    <url>/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h4 id="Webpack-plugin"><a href="#Webpack-plugin" class="headerlink" title="Webpack plugin"></a>Webpack plugin</h4><ol><li><p>html-webpack-plugin: </p><p>webpack构建后生成html文件，同时把构建好的入口js文件引入到生成的html文件中</p></li><li><p>clean-webpack-plugin: </p><p>每次构建前清理输出目录里面的文件</p></li><li><p>mini-css-extract-plugin: </p><p>抽离css样式，将所有css提取打包成一个文件</p></li><li><p>copy-webpack-plugin: </p><p>将项目中的某个文件或整个文件夹在打包的时候复制一份到打包后的文件夹中</p></li><li><p>event-hooks-webpack-plugin: 暴露webpack钩子</p></li><li><p>node-polyfill-webpack-plugin: 引入node核心模块</p></li><li><p>eslint-webpack-plugin: 语言差错工具</p></li></ol>]]></content>
     
     
     <categories>
