@@ -16,17 +16,17 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="Still water run deep">
+    <meta name="description" content="内存泄漏内存泄漏是指计算机可用的内存越来越少，我们无法访问某个对象，但是垃圾回收机制却认为该对象还在引用。因此垃圾回收机制不会释放该对象，使得这块内存无法释放，这样的内存积少成多，导致了内存泄漏，让系统越来越卡以至于崩溃。 垃圾回收GC（Garbage collection)的策略： 引用计数 reference counting 跟踪记录每个值被引用的次数。循环引用的对象无法被回收，时间开销大。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器系列之-垃圾回收">
 <meta property="og:url" content="http://example.com/2022/10/30/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="Still water run deep">
+<meta property="og:description" content="内存泄漏内存泄漏是指计算机可用的内存越来越少，我们无法访问某个对象，但是垃圾回收机制却认为该对象还在引用。因此垃圾回收机制不会释放该对象，使得这块内存无法释放，这样的内存积少成多，导致了内存泄漏，让系统越来越卡以至于崩溃。 垃圾回收GC（Garbage collection)的策略： 引用计数 reference counting 跟踪记录每个值被引用的次数。循环引用的对象无法被回收，时间开销大。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-30T04:36:35.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:36:35.609Z">
+<meta property="article:modified_time" content="2022-11-02T14:08:22.124Z">
 <meta property="article:author" content="Sarah">
-<meta property="article:tag" content="learn front-end">
+<meta property="article:tag" content="垃圾回收， 内存泄漏">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.3k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -264,7 +264,43 @@
             
               <div class="markdown-body">
                 
-                
+                <h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><p>内存泄漏是指计算机可用的内存越来越少，我们无法访问某个对象，但是垃圾回收机制却认为该对象还在引用。因此垃圾回收机制不会释放该对象，使得这块内存无法释放，这样的内存积少成多，导致了内存泄漏，让系统越来越卡以至于崩溃。</p>
+<h4 id="垃圾回收GC（Garbage-collection-的策略："><a href="#垃圾回收GC（Garbage-collection-的策略：" class="headerlink" title="垃圾回收GC（Garbage collection)的策略："></a>垃圾回收GC（Garbage collection)的策略：</h4><ol>
+<li><p>引用计数 reference counting</p>
+<p>跟踪记录每个值被引用的次数。循环引用的对象无法被回收，时间开销大。发现垃圾时立即回收（引用次数为0时），将内存释放，最大限度减少程序卡顿时间</p>
+</li>
+<li><p>标记清除 mark-sweep</p>
+<p>内存空间碎片化，标记清除阶段，整个程序会等待。</p>
+</li>
+<li><p>标记整理 Mark-compact</p>
+<p>解决了内存空间碎片化的问题，但是回收的效率比较慢。标记结束后，标记-整理方法会将活着的对象向内存的一边移动，最后清理掉边界的内存。</p>
+</li>
+<li><p>分代回收</p>
+</li>
+</ol>
+<h4 id="栈垃圾回收"><a href="#栈垃圾回收" class="headerlink" title="栈垃圾回收"></a>栈垃圾回收</h4><p>当函数执行结束，javascript引擎通过向下移动ESP指针（记录调用栈当前执行状态）来销毁栈中的执行上下文。</p>
+<h4 id="堆垃圾回收"><a href="#堆垃圾回收" class="headerlink" title="堆垃圾回收"></a>堆垃圾回收</h4><p>新生代空间小，一般根据操作系统分配32M|16M, 用于储存存活时间较短的对象。</p>
+<p>老生代空间大，一般根据操作系统分配1.4G|700M, 用于存储存活时间较长或者占用内存较大的对象。</p>
+<h4 id="V8的垃圾回收策略"><a href="#V8的垃圾回收策略" class="headerlink" title="V8的垃圾回收策略"></a>V8的垃圾回收策略</h4><p>V8是一款主流的Javascript执行引擎。V8内存分为新生代和老生代. V8采用基于分代回收思想实现垃圾回收，分别使用2个不同的垃圾回收器针对不同的部分采用不同的算法。</p>
+<h5 id="新生代：副垃圾回收器"><a href="#新生代：副垃圾回收器" class="headerlink" title="新生代：副垃圾回收器"></a>新生代：副垃圾回收器</h5><p>采用复制算法（Scavenge 算法）和标记整理法。新生代内存分为2个等大的空间，From状态和to状态两个空间。使用的空间为from, 空闲的空间为to. 代码执行的时候需要申请空间使用，就会将所有的变量对象存储于from空间，当from空间的使用量到达一定程度后，GC就会开启标记整理，找到from空间的所有的活动对象并整理，然后拷贝到to空间，再将from空间释放。完成复制后，from空间和to空间进行翻转。</p>
+<blockquote>
+<p>对象晋升策略：也就是经过两次垃圾回收依然存活的对象，会被移动到老生代区。</p>
+</blockquote>
+<h5 id="老生代：主垃圾回收器"><a href="#老生代：主垃圾回收器" class="headerlink" title="老生代：主垃圾回收器"></a>老生代：主垃圾回收器</h5><p>主要采用标记清除，标记整理和增量标记算法。首先使用标记清除完成垃圾空间的回收，采用标记整理进行空间优化，采用增量标记进行效率优化。</p>
+<blockquote>
+<p><strong>全停顿</strong>：由于js是单线程的，所以一旦执行垃圾回收算法，正在执行的js脚本需要暂停下来，等垃圾回收完毕后再恢复脚本执行。这种行为叫做全停顿。</p>
+</blockquote>
+<blockquote>
+<p>增量标记（incremental marking ）：如果堆中的数据较多，那么回收需要时间，会造成页面卡顿。为了降低整个卡顿，v8将标记过程分为一个一个子标记过程，同时垃圾回收标记和js应用逻辑交替进行。</p>
+</blockquote>
+<h4 id="可能导致内存泄漏的场景："><a href="#可能导致内存泄漏的场景：" class="headerlink" title="可能导致内存泄漏的场景："></a>可能导致内存泄漏的场景：</h4><ol>
+<li>循环引用</li>
+<li>无意的全局变量</li>
+<li>被遗忘的计时器和回调函数</li>
+</ol>
+<h4 id="如何优化内存管理："><a href="#如何优化内存管理：" class="headerlink" title="如何优化内存管理："></a>如何优化内存管理：</h4><p>优化内存的一个最好的衡量方式就是只保存程序运行时需要的数据，对于已经使用的或者不需要的数据，应该将其值设为null，叫“解除引用”。</p>
+<p>当清空一个数组时，我们通常的做法时array &#x3D; [], 但这种做法的背后是新建了一个新的数组然后将原来的数组当作内存垃圾。建议的做法是array.length &#x3D; 0, 这样做不仅可以重用原来的变量，而且还避免创建了新的数组。</p>
+
                 
               </div>
             
@@ -272,6 +308,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97/" class="category-chain-item">浏览器系列</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%EF%BC%8C-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">#垃圾回收， 内存泄漏</a>
+      
+    </div>
   
 </div>
 
