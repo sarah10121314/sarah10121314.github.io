@@ -8,7 +8,7 @@
     <link href="/2022/11/02/English-06/"/>
     <url>/2022/11/02/English-06/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h4 id="After-you-caught-your-boyfriend-cheating-on-you"><a href="#After-you-caught-your-boyfriend-cheating-on-you" class="headerlink" title="After you caught your boyfriend cheating on you"></a>After you caught your boyfriend cheating on you</h4><p>Are you alright?</p><p>Get lost and leave me alone.</p><p>Don’t be mad at me, honey. She is just a colleague of mine. I accidentally touch her hand.</p><p>Oh, really? Look at what you texted her. You are the only one I love, you are my goddness. Of course i am single. </p><p>You wanna be single? Sure! Get lost!</p><p>How could you read my text messages? You invade my privacy!</p><p>Go to hell! Don’t ever let me see your face again. You suck!</p><h4 id="Men-never-understand-makeup"><a href="#Men-never-understand-makeup" class="headerlink" title="Men never understand makeup"></a>Men never understand makeup</h4><p>Wow, honey. You put on your makeup. You look glamorous!</p><p>Oh, thanks dear. But I only applied my lipstick.</p><p>Well, you are not the same as yesterday without makeup.</p><p>Seriously? Yesterday I put on concealer and foundation, and applied eyeliner and eye shadow. I just forgot to put on my lipstick.</p><p>Oh, sweetheart. You are stunning anyway.</p><p>You are just buttering me up! Men never understand makeup!</p>]]></content>
     
     
     <categories>
@@ -586,7 +586,7 @@
     <link href="/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/"/>
     <url>/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/</url>
     
-    <content type="html"><![CDATA[<h4 id="Webpack-plugin"><a href="#Webpack-plugin" class="headerlink" title="Webpack plugin"></a>Webpack plugin</h4><ol><li><p>html-webpack-plugin: </p><p>webpack构建后生成html文件，同时把构建好的入口js文件引入到生成的html文件中</p></li><li><p>clean-webpack-plugin: </p><p>每次构建前清理输出目录里面的文件</p></li><li><p>mini-css-extract-plugin: </p><p>抽离css样式，将所有css提取打包成一个文件</p></li><li><p>copy-webpack-plugin: </p><p>将项目中的某个文件或整个文件夹在打包的时候复制一份到打包后的文件夹中</p></li><li><p>event-hooks-webpack-plugin: 暴露webpack钩子</p></li><li><p>node-polyfill-webpack-plugin: 引入node核心模块</p></li><li><p>eslint-webpack-plugin: 语言差错工具</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h4 id="Webpack-plugin"><a href="#Webpack-plugin" class="headerlink" title="Webpack plugin"></a>Webpack plugin</h4><ol><li><p>html-webpack-plugin: </p><p>webpack构建后生成html文件，同时把构建好的入口js文件引入到生成的html文件中</p></li><li><p>clean-webpack-plugin: </p><p>每次构建前清理输出目录里面的文件</p></li><li><p>mini-css-extract-plugin: </p><p>抽离css样式，将所有css提取打包成一个文件</p></li><li><p>copy-webpack-plugin: </p><p>将项目中的某个文件或整个文件夹在打包的时候复制一份到打包后的文件夹中</p></li><li><p>event-hooks-webpack-plugin: 暴露webpack钩子</p></li><li><p>node-polyfill-webpack-plugin: 引入node核心模块</p></li><li><p>eslint-webpack-plugin: 语言查错工具</p></li></ol>]]></content>
     
     
     <categories>
