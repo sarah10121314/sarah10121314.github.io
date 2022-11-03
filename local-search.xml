@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>06-What&#39;s for dinner &amp;&amp; Meeting the due</title>
+    <link href="/2022/11/03/English-07/"/>
+    <url>/2022/11/03/English-07/</url>
+    
+    <content type="html"><![CDATA[<h4 id="What’s-for-dinner"><a href="#What’s-for-dinner" class="headerlink" title="What’s for dinner"></a>What’s for dinner</h4><p>Dear, what are you cooking? Smell so yummy!</p><p>Your favorite pasta, guess what I put in.</p><p>I smell tomato and bacon, anything else?</p><p>oh, did you add cheese?</p><p>Not yet, cheese is the last step. I also added some onion and mushroom.</p><p>No wonder it has that delicious smell, but I also have a craving for pizza.</p><p>well, I made a lot of pasta, we can have pizza for lunch tomorrow, is that ok?</p><p>Sure, thanks for making dinner, dear.</p><h4 id="Meeting-the-due"><a href="#Meeting-the-due" class="headerlink" title="Meeting the due"></a>Meeting the due</h4><p>Hey, Alice. You look exhausted. What’s going on?</p><p>Don’t mention it. I stayed up all night to finish my report. It is due today, at 7 am.</p><p>Oh, my gosh!  Why don’t you stay at home and get some sleep?</p><p>I wish! I’m having another group meeting in an hour and I need to prepare for it.</p><p>Just a small suggestion, maybe next time you can try to finish your work earlier?</p><p>Easier said than done. My professor assigned two chapters of reading materials and asked us to write a report in a week.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>English Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>English</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>English-06</title>
     <link href="/2022/11/02/English-06/"/>
     <url>/2022/11/02/English-06/</url>
@@ -607,31 +632,6 @@
   
   
   <entry>
-    <title>Vue源码-Vue.use</title>
-    <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/"/>
-    <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/</url>
-    
-    <content type="html"><![CDATA[<h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p><ol><li>如果插件是一个对象，必须提供install方法。</li><li>如果插件是一个函数，它会被作为install方法。</li><li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li><li>需要在new Vue()之前调用</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure><blockquote><p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p></blockquote>]]></content>
-    
-    
-    <categories>
-      
-      <category>Vue源码解析</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>vue插件</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Vue源码-nextTick</title>
     <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/"/>
     <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/</url>
@@ -649,6 +649,31 @@
     <tags>
       
       <tag>nextTick</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vue源码-Vue.use</title>
+    <link href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/"/>
+    <url>/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p><ol><li>如果插件是一个对象，必须提供install方法。</li><li>如果插件是一个函数，它会被作为install方法。</li><li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li><li>需要在new Vue()之前调用</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure><blockquote><p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue源码解析</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue插件</tag>
       
     </tags>
     
