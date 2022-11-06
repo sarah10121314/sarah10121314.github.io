@@ -16,24 +16,22 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne">
+    <meta name="description" content="缩写 实际    flex: 1 flex: 1  1  0%   flex: auto flex: 1  1  auto   flex: none flex: 0  0  auto   容器的属性： flex-direction:  row, row-reverse, column, column-reverse flex-wrap: nowrap(不换行的化，子项设置的宽度会失效), w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue源码-Vue.use">
-<meta property="og:url" content="http://example.com/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20Vue.use/index.html">
+<meta property="og:title" content="Flex布局">
+<meta property="og:url" content="http://example.com/2022/11/05/Flex%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="Vue.use(Plugin)用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。  如果插件是一个对象，必须提供install方法。 如果插件是一个函数，它会被作为install方法。 当install方法被同一个插件多次调用，插件将只会被安装一次。 需要在ne">
+<meta property="og:description" content="缩写 实际    flex: 1 flex: 1  1  0%   flex: auto flex: 1  1  auto   flex: none flex: 0  0  auto   容器的属性： flex-direction:  row, row-reverse, column, column-reverse flex-wrap: nowrap(不换行的化，子项设置的宽度会失效), w">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.wallpaperhub.app/cloudcache/3/7/c/2/4/3/37c243cce6271e18cffd39f1de6d2e1338c353d8.jpg">
-<meta property="article:published_time" content="2022-10-16T07:32:51.000Z">
-<meta property="article:modified_time" content="2022-10-28T13:30:19.985Z">
+<meta property="article:published_time" content="2022-11-05T14:32:38.000Z">
+<meta property="article:modified_time" content="2022-11-05T15:46:11.937Z">
 <meta property="article:author" content="Sarah">
-<meta property="article:tag" content="vue插件">
+<meta property="article:tag" content="flex">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.wallpaperhub.app/cloudcache/3/7/c/2/4/3/37c243cce6271e18cffd39f1de6d2e1338c353d8.jpg">
   
   
   
-  <title>Vue源码-Vue.use - 童话镇</title>
+  <title>Flex布局 - 童话镇</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">Vue源码-Vue.use</span>
+            <span id="subtitle">Flex布局</span>
           
         </div>
 
@@ -200,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-16 15:32" pubdate>
-          2022年10月16日 下午
+        <time datetime="2022-11-05 22:32" pubdate>
+          2022年11月5日 晚上
         </time>
       </span>
     
@@ -212,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          594 字
         
       </span>
     
@@ -223,7 +221,7 @@
         
         
         
-          10 分钟
+          5 分钟
         
       </span>
     
@@ -261,23 +259,45 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vue源码-Vue.use</h1>
+            <h1 style="display: none">Flex布局</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="Vue-use-Plugin"><a href="#Vue-use-Plugin" class="headerlink" title="Vue.use(Plugin)"></a>Vue.use(Plugin)</h4><p>用途：用来安装插件，如Vuex, vue-router, ElementUI等， 是vue与插件之间的桥梁。其实就是调用插件提供的install方法，install方法内部可以访问Vue。</p>
-<ol>
-<li>如果插件是一个对象，必须提供install方法。</li>
-<li>如果插件是一个函数，它会被作为install方法。</li>
-<li>当install方法被同一个插件多次调用，插件将只会被安装一次。</li>
-<li>需要在new Vue()之前调用</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Vue</span>.<span class="hljs-property">use</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">plugin:<span class="hljs-built_in">Function</span> | <span class="hljs-built_in">Object</span></span>) &#123;<br>    <span class="hljs-keyword">const</span> installedPlugins = (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> || (<span class="hljs-variable language_">this</span>.<span class="hljs-property">_installedPlugins</span> = []));<br>    <span class="hljs-keyword">if</span> (installedPulgins.<span class="hljs-title function_">indexOf</span>(plugin) &gt; -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">const</span> args = <span class="hljs-title function_">toArray</span>(<span class="hljs-variable language_">arguments</span>, <span class="hljs-number">1</span>); <br>    <span class="hljs-comment">// 将类数组转化为数组，并获取从下标1到最后的其他参数（去掉了plugin)，如Vue.use(plugin, &#123;size:&#x27;&#x27;&#125;)</span><br>    <br>    args.<span class="hljs-title function_">unshift</span>(<span class="hljs-variable language_">this</span>);<br>    <span class="hljs-comment">// 将Vue构造器添加为第一个参数，因为install方法的第一个参数是Vue</span><br>    <br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> pulgin.<span class="hljs-property">install</span> === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-property">install</span>.<span class="hljs-title function_">apply</span>(plugin, args);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> plugin === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>        plugin.<span class="hljs-title function_">apply</span>(<span class="hljs-literal">null</span>, args);<br>    &#125;<br>    installedPlugins.<span class="hljs-title function_">push</span>(plugin);<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>;  <br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">toArray</span>(<span class="hljs-params">list:any, start?number</span>):<span class="hljs-title class_">Array</span>&lt;any&gt; &#123;<br>    start = start || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> i = list.<span class="hljs-property">length</span> - start;<br>    <span class="hljs-keyword">const</span> <span class="hljs-attr">ret</span>:<span class="hljs-title class_">Array</span>&lt;any&gt; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(i)<br>    <span class="hljs-keyword">while</span>(i--) &#123;<br>        ret[i] = list[i + start]<br>    &#125;<br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Flow 是facebook推出的Javascript静态类型检查工具。Javascript是动态类型语言，容易写出非常隐蔽的隐患代码，在编译期甚至看上去都不会报错，但在运行阶段就可能出现各种奇怪的bug。</p>
-</blockquote>
+                <table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>实际</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex: 1</td>
+<td>flex: 1  1  0%</td>
+</tr>
+<tr>
+<td>flex: auto</td>
+<td>flex: 1  1  auto</td>
+</tr>
+<tr>
+<td>flex: none</td>
+<td>flex: 0  0  auto</td>
+</tr>
+</tbody></table>
+<p><strong>容器的属性：</strong></p>
+<p>flex-direction:  row, row-reverse, column, column-reverse</p>
+<p>flex-wrap: nowrap(不换行的化，子项设置的宽度会失效), wrap, wrap-reverse</p>
+<p>flex-flow: [row, nowrap] &#x2F;&#x2F; flex-direction + flex-wrap</p>
+<p>justify-content: flex-start, flex-end, center, space-between, space-around</p>
+<p>align-items: flex-start, flex-end, center, stretch, baseline</p>
+<p>align-content: 定义多根轴线的时候用到</p>
+<p><strong>Item的属性：</strong></p>
+<p>order: 数值越小，排列越靠前</p>
+<p>flex-grow: 存在多余空间时是否放大</p>
+<p>flex-shrink: 空间不足的时候，是否缩小</p>
+<p>flex-basis: 在分配多余空间之前，flex项目占据的主轴大小。默认为auto，即项目本来的大小，</p>
+<p>flex: flex-grow + flex-shrink + flex-basis, 默认值是0 1 auto</p>
+<p>align-self: 允许单个项目有与其他项目不一样的对齐方式，可以覆盖align-items的值</p>
 
                 
               </div>
@@ -296,7 +316,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Vue%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="category-chain-item">Vue源码解析</a>
+  <a href="/categories/css%E7%B3%BB%E5%88%97/" class="category-chain-item">css系列</a>
   
   
 
@@ -311,7 +331,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/vue%E6%8F%92%E4%BB%B6/">#vue插件</a>
+        <a href="/tags/flex/">#flex</a>
       
     </div>
   
@@ -323,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue源码-Vue.use</div>
-      <div>http://example.com/2022/10/16/Vue系列之- Vue.use/</div>
+      <div>Flex布局</div>
+      <div>http://example.com/2022/11/05/Flex布局/</div>
     </div>
     <div class="license-meta">
       
@@ -336,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月16日</div>
+          <div>2022年11月5日</div>
         </div>
       
       
@@ -368,9 +388,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/19/webpack%E7%B3%BB%E5%88%97%E4%B9%8B-%20webpack%E5%9F%BA%E7%A1%80/" title="webpack基础">
+                      <a href="/2022/11/06/English-08/" title="English-08">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">webpack基础</span>
+                        <span class="hidden-mobile">English-08</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -378,8 +398,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/16/Vue%E7%B3%BB%E5%88%97%E4%B9%8B-%20nextTick/" title="Vue源码-nextTick">
-                        <span class="hidden-mobile">Vue源码-nextTick</span>
+                      <a href="/2022/11/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%B3%BB%E5%88%97%E4%B9%8B-%20cookie/" title="cookie">
+                        <span class="hidden-mobile">cookie</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
