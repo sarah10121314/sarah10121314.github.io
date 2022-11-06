@@ -55,6 +55,18 @@
     <content type="html"><![CDATA[]]></content>
     
     
+    <categories>
+      
+      <category>浏览器系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cookie</tag>
+      
+    </tags>
     
   </entry>
   
@@ -81,6 +93,18 @@
     <content type="html"><![CDATA[]]></content>
     
     
+    <categories>
+      
+      <category>Vue源码解析</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>slot</tag>
+      
+    </tags>
     
   </entry>
   
