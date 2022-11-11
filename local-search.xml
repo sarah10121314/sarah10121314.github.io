@@ -81,6 +81,12 @@
     
     
     
+    <tags>
+      
+      <tag>手写系列</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -261,6 +267,12 @@
     
     <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">EventEmitter</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span> = &#123;&#125;<br>    &#125;<br>    <span class="hljs-title function_">on</span>(<span class="hljs-params">event, cb</span>)&#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event]) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event].<span class="hljs-title function_">push</span>(cb);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event] = [cb];<br>        &#125;<br>    &#125;<br>    <span class="hljs-title function_">once</span>(<span class="hljs-params">event, cb</span>) &#123;<br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">proxy</span>(<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-title function_">cb</span>();<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">off</span>(event, proxy)<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">on</span>(event, proxy);<br>    &#125;<br>    <span class="hljs-title function_">off</span>(<span class="hljs-params">event, cb</span>)&#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event]) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event] = <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event].<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">fn</span> =&gt;</span> fn!= cb);<br>        &#125; <br>    &#125;<br>    <span class="hljs-title function_">emit</span>(<span class="hljs-params">event, ...payload</span>)&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event]) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">listeners</span>[event].<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">cb</span> =&gt;</span> &#123;<br>                cb.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, payload)<br>            &#125;)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
     
     
     <tags>
