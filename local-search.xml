@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>09-talk about weather</title>
+    <link href="/2022/11/13/English-09/"/>
+    <url>/2022/11/13/English-09/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Talk-about-weather"><a href="#Talk-about-weather" class="headerlink" title="Talk about weather"></a>Talk about weather</h4><p>Alice, don’t forget to bring an umbrella with you. It is going to rain today.</p><p>Really? But it is sunny now.</p><p>I checked the weather forecast. It show the rain will come at 3 pm. Bring one, just in case.</p><p>All right.</p><p>Hey, mom, check it out. My friend Nessy posted, it is freezing outside. The temperatures are starting deepen in negatives. And that’s the sign of first snowfall.</p><p>Of course, honey. we are in Australia, she is in Northern Hemisphere.</p><p>Yeah. Oh, I’m so jealous of her. I’ve never seen a white Christmas.</p><h4 id="Call-in-sick"><a href="#Call-in-sick" class="headerlink" title="Call in sick"></a>Call in sick</h4><p>Hi, Jack. Sorry to call you in such a hurry. I’m feeling sick and I am afraid I can’t go to work today.</p><p>Would is it possible that if I take threes day off?</p><p>Sure, no problem. How are you feeling now?</p><p>I’m having a stomachache. I took some pills and made an appointment with my doctor.</p><p>Sorry to hear that. Don’t worry, I will ask Max to cover for you.</p><p>I vaguely recall that Max said that he will take one day personal leave this week, you might want to check with him.</p><p>Yes, he is off today. Take it easy, and get some rest. I will be glad to help you if there is anything in need.</p><p>Thanks for you understanding.</p><p>I will get back to work as soon as possible I get better.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>English Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>weather</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>手写系列之- Ajax</title>
+    <link href="/2022/11/11/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20Ajax/"/>
+    <url>/2022/11/11/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20Ajax/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ajax</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>08-Rent an apartment &amp;&amp; about quarantine</title>
     <link href="/2022/11/06/English-08/"/>
     <url>/2022/11/06/English-08/</url>
@@ -73,17 +123,23 @@
   
   
   <entry>
-    <title>clone</title>
+    <title></title>
     <link href="/2022/11/04/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20deepClone/"/>
     <url>/2022/11/04/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20deepClone/</url>
     
     <content type="html"><![CDATA[]]></content>
     
     
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
+    
     
     <tags>
       
-      <tag>手写系列</tag>
+      <tag>deepClone</tag>
       
     </tags>
     
@@ -336,13 +392,25 @@
   
   
   <entry>
-    <title>promise</title>
+    <title>手写系列之- promise</title>
     <link href="/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20promise/"/>
     <url>/2022/10/30/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20promise/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>Promise</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPromise</span> &#123;<br>    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">executor</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initValue</span>();<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initBind</span>();<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-title function_">executor</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">resolve</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">reject</span>);<br>        &#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reject</span>(e);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-title function_">initBind</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">resolve</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">resolve</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>);<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">reject</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">reject</span>.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>);<br>    &#125;<br><br>    initValue () &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span> = <span class="hljs-literal">null</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> = <span class="hljs-string">&#x27;pending&#x27;</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">onFulfilledCallbacks</span> = [];<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">onRejectedCallbacks</span> = [];<br>    &#125;<br><br>    resolve (value) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> !== <span class="hljs-string">&#x27;pending&#x27;</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> = <span class="hljs-string">&#x27;fulfilled&#x27;</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span> = value;<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">onFulfilledCallbacks</span>.<span class="hljs-property">length</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">onFulfilledCallbacks</span>.<span class="hljs-title function_">shift</span>()(<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span>);<br>        &#125;<br>    &#125;<br><br>    reject (reason) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> !== <span class="hljs-string">&#x27;pending&#x27;</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> = <span class="hljs-string">&#x27;rejected&#x27;</span>;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span> = reason;<br><br>        <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">onRejectedCallbacks</span>.<span class="hljs-property">length</span>) &#123;<br>            <span class="hljs-variable language_">this</span>.<span class="hljs-property">onRejectedCallbacks</span>.<span class="hljs-title function_">shift</span>()(<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseReason</span>);<br>        &#125;<br>    &#125;<br><br>    then (onFulfilled, onRejected) &#123;<br>        onFulfilled = <span class="hljs-keyword">typeof</span> onFulfilled === <span class="hljs-string">&#x27;function&#x27;</span> ? onFulfilled : <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> val;<br>        onRejected = <span class="hljs-keyword">typeof</span> onFulfilled === <span class="hljs-string">&#x27;function&#x27;</span> ? onRejected : <span class="hljs-function"><span class="hljs-params">reason</span> =&gt;</span> &#123; <span class="hljs-keyword">throw</span> reason &#125;;<br><br>        <span class="hljs-keyword">const</span> thenPromise = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">const</span> <span class="hljs-title function_">resolvePromise</span> = cb =&gt; &#123;<br>                <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        <span class="hljs-keyword">const</span> x = <span class="hljs-title function_">cb</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span>);<br>                        <span class="hljs-keyword">if</span> (x === thenPromise) &#123;<br>                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;不能返回自身&#x27;</span>);<br>                        &#125;<br>                        <span class="hljs-keyword">if</span> (x <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">MyPromise</span>) &#123;<br>                            x.<span class="hljs-title function_">then</span>(resolve, reject);<br><br>                        &#125; <span class="hljs-keyword">else</span> &#123;<br>                            <span class="hljs-title function_">resolve</span>(x);<br>                        &#125;<br>    <br>                    &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>                        <span class="hljs-title function_">reject</span>(e);<br>                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(e)<br>                    &#125;<br>                &#125;)<br>            &#125;;<br><br>            <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> === <span class="hljs-string">&#x27;fulfilled&#x27;</span>) &#123;<br>                <span class="hljs-title function_">resolvePromise</span>(onFulfilled);<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseResult</span> === <span class="hljs-string">&#x27;rejected&#x27;</span>) &#123;<br>                <span class="hljs-title function_">resolvePromise</span>(onRejected);<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">PromiseState</span> === <span class="hljs-string">&#x27;pending&#x27;</span>) &#123;<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">onFulfilledCallbacks</span>.<span class="hljs-title function_">push</span>(resolvePromise.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>, onFulfilled));<br>                <span class="hljs-variable language_">this</span>.<span class="hljs-property">onRejectedCallbacks</span>.<span class="hljs-title function_">push</span>(resolvePromise.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>, onRejected));<br>            &#125;<br>        &#125;)<br>        <br>        <span class="hljs-keyword">return</span> thenPromise;<br><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> test1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;成功&#x27;</span>);<br>    <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;失败1&#x27;</span>);<br>&#125;)<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test1);<br><br><span class="hljs-keyword">const</span> test2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;失败&#x27;</span>);<br>&#125;)<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test2);<br><br><span class="hljs-keyword">const</span> test3 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyPromise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">resolve</span>(<span class="hljs-number">100</span>);<br>&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-number">2</span> * res, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-number">3</span> * err)<br>  .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功&#x27;</span>, res), <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>, err));<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(test3);<br><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>promise</tag>
+      
+    </tags>
     
   </entry>
   
