@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="童话镇">
 <meta property="og:description" content="TCP报文中比较重要的字段 序列号(sequence number): 解决网络中乱序的问题  确认应答号（acknowledgement number): 解决网络中丢包的问题  标志位（flags) ACK: 确认序号有效 SYN: 发起一个连接 FIN: 释放一个连接 RST: 重置一个连接 PSH: 接收方应该尽快将这个报文发给应用层 URG: 紧急指针（urgent pointer)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:\%E5%AD%A6%E4%B9%A0\Blog\img\TCP%E5%A4%B4%E9%83%A8.png">
-<meta property="og:image" content="d:\%E5%AD%A6%E4%B9%A0\Blog\img\%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
-<meta property="og:image" content="d:/%E5%AD%A6%E4%B9%A0/Blog/img/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B-1.png">
+<meta property="og:image" content="http://example.com/img/loading.gif">
+<meta property="og:image" content="http://example.com/img/loading.gif">
+<meta property="og:image" content="http://example.com/img/loading.gif">
 <meta property="article:published_time" content="2022-10-29T03:50:37.000Z">
 <meta property="article:modified_time" content="2022-10-30T13:02:05.168Z">
 <meta property="article:author" content="Sarah">
 <meta property="article:tag" content="三次握手">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="d:\%E5%AD%A6%E4%B9%A0\Blog\img\TCP%E5%A4%B4%E9%83%A8.png">
+<meta name="twitter:image" content="http://example.com/img/loading.gif">
   
   
   
@@ -280,7 +280,7 @@
 <p>RST: 重置一个连接</p>
 <p>PSH: 接收方应该尽快将这个报文发给应用层</p>
 <p>URG: 紧急指针（urgent pointer)</p>
-<p><img src="D:\学习\Blog\img\TCP头部.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="D:\学习\Blog\img\TCP头部.png"></p>
 </li>
 </ol>
 <h4 id="三次握手的过程："><a href="#三次握手的过程：" class="headerlink" title="三次握手的过程："></a>三次握手的过程：</h4><p>客户端状态：CLOSED, SYN-SENT, ESTABLISHED</p>
@@ -294,7 +294,7 @@
 <blockquote>
 <p>注意：第三次握手时可以携带数据的，因为发送端已经确认了服务端有接收和发送能力，而前两次并没有确认对方的接收能力。</p>
 </blockquote>
-<p><img src="D:\学习\Blog\img\三次握手.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="D:\学习\Blog\img\三次握手.png"></p>
 <h4 id="为什么要三次握手："><a href="#为什么要三次握手：" class="headerlink" title="为什么要三次握手："></a>为什么要三次握手：</h4><ol>
 <li>因为有超时重传机制的存在，要防止已失效的连接请求报文段又突然传送到了服务端，造成混乱</li>
 <li>为了防止服务器端开启一些无用的连接增加服务器开销</li>
@@ -305,7 +305,7 @@
 </blockquote>
 <p>假如发送端发送了一个序列号为90的syn报文，此时网络拥塞，发送端可能会连续发送多次请求，有发送了一个序列号为100的syn报文。网络恢复，服务端先收到了序列号为90的syn报文，然后就会给发送端发送ackNumber &#x3D; 90 +1, syn&#x3D;***的报文。发送端接收到后，通过上下文判断，发现自己期望收到的ackNumber应该是100+1，而不是90+1， 就会判断出这是一个历史连接，从而发起RST报文终止连接。</p>
 <p>客户端第一次握手的时候，可能经历网络拥塞，客户端以为这个连接已经丢失，之后重新发送一个请求连接的报文到服务器。当第一个请求在<strong>连接释放后</strong>的某个时间到达服务器，如果是使用二次握手，这时候服务器发送确认数据包给客户端，新的连接就建立了。但是由于客户端这时候没有发送连接请求，所以它不会理睬服务端的确认，也不会跟服务端通信，而这时的服务器会一直等待客户端发送数据，这样服务器就开启了无效连接，浪费了资源。</p>
-<p><img src="D:/学习/Blog/img/三次握手-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="D:/学习/Blog/img/三次握手-1.png"></p>
 <p>在三次握手的机制下，<strong>客户端就可以根据确认应答号判断所接受到的ACK+SYN报文是不是历史连接</strong>，并根据是否为历史连接做出不同的应答。</p>
 <p>如果是历史连接，则第三次握⼿发送的报⽂是 RST 报⽂，以此中⽌历史连接；<br>如果不是历史连接，则第三次发送的报⽂是 ACK 报⽂，通信双⽅就会成功建⽴连接；</p>
 <p>还有一个原因，那就是<strong>客户端和服务端要同步双方的初始序列号</strong>。</p>
@@ -671,5 +671,18 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>

@@ -274,7 +274,7 @@
 <p>2.将代码转化成AST抽象语法树</p>
 <p>3.在AST阶段中去处理代码</p>
 <p>4.把AST抽象语法树变成浏览器可以识别的代码， 然后输出</p>
-<p><img src="C:\Users\Admin\Desktop\139239-20220413135824579-927502402.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="C:\Users\Admin\Desktop\139239-20220413135824579-927502402.png" alt="img"></p>
 <p><strong>vite</strong>是直接启动开发服务器，然后按需编译依赖文件。Vite原理:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;./main.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
@@ -283,7 +283,7 @@
 <blockquote>
 <p>Vite首页加载时速度较慢。是因为vite使用浏览器承载部分打包与模块加载工作，因此即使开发服务器快速启动，但是浏览器也需要更多时间来下载和处理所有这些请求。</p>
 </blockquote>
-<p><img src="C:\Users\Admin\Desktop\139239-20220413135834497-425297286.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="C:\Users\Admin\Desktop\139239-20220413135834497-425297286.png" alt="img"></p>
 <h4 id="2-编译速度"><a href="#2-编译速度" class="headerlink" title="2. 编译速度"></a>2. 编译速度</h4><hr>
 <p>vite将应用中的模块分为：</p>
 <p><strong>依赖：</strong>通常为纯js文件, 开发时不会变动。—–使用esbuild预构建依赖。Esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍</p>
@@ -636,5 +636,18 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body>
 </html>
