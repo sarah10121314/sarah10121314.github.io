@@ -16,22 +16,22 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="This is a fire station. It’s a fire engine. Fire engines have water tanks, hoses and ladders. The fire engine blares its siren. It speeds towards the fire place. Wee-woo, wee-woo.  Look, there are fir">
+    <meta name="description" content="vue3.0的优化 源码优化1.更好的代码管理方式：使用monorepo来管理源码，提升代码的可维护性 vue2.0源码结构：src下面有不同的模块 vue3.0源码结构：不同的packages package（如reactivity这个响应库）时可以独立于vue.js使用的，这样用户如果只想是哟个vuejs3.0的响应式能力，可单独依赖这个响应式库而不用依赖整个vue.js,减少了引用包的体积大">
 <meta property="og:type" content="article">
-<meta property="og:title" content="17-fire station">
-<meta property="og:url" content="http://example.com/2022/11/26/English-17/index.html">
+<meta property="og:title" content="Vue2.x与Vue3.x">
+<meta property="og:url" content="http://example.com/2022/11/27/Vue2-x%E4%B8%8EVue3-x/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="This is a fire station. It’s a fire engine. Fire engines have water tanks, hoses and ladders. The fire engine blares its siren. It speeds towards the fire place. Wee-woo, wee-woo.  Look, there are fir">
+<meta property="og:description" content="vue3.0的优化 源码优化1.更好的代码管理方式：使用monorepo来管理源码，提升代码的可维护性 vue2.0源码结构：src下面有不同的模块 vue3.0源码结构：不同的packages package（如reactivity这个响应库）时可以独立于vue.js使用的，这样用户如果只想是哟个vuejs3.0的响应式能力，可单独依赖这个响应式库而不用依赖整个vue.js,减少了引用包的体积大">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-26T13:53:44.000Z">
-<meta property="article:modified_time" content="2022-11-27T10:59:09.955Z">
+<meta property="article:published_time" content="2022-11-27T11:11:52.000Z">
+<meta property="article:modified_time" content="2022-11-27T12:21:53.409Z">
 <meta property="article:author" content="Sarah">
-<meta property="article:tag" content="fire station">
+<meta property="article:tag" content="vue3.0">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>17-fire station - 童话镇</title>
+  <title>Vue2.x与Vue3.x - 童话镇</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">17-fire station</span>
+            <span id="subtitle">Vue2.x与Vue3.x</span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-26 21:53" pubdate>
-          2022年11月26日 晚上
+        <time datetime="2022-11-27 19:11" pubdate>
+          2022年11月27日 晚上
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          666 字
+          1k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          6 分钟
+          9 分钟
         
       </span>
     
@@ -259,17 +259,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">17-fire station</h1>
+            <h1 style="display: none">Vue2.x与Vue3.x</h1>
             
             
               <div class="markdown-body">
                 
-                <p>This is a fire station. It’s a fire engine. Fire engines have water tanks, hoses and ladders.</p>
-<p>The fire engine blares its siren. It speeds towards the fire place. Wee-woo, wee-woo. </p>
-<p>Look, there are firefighters. Firefighters wear special uniforms, helmets, gloves and breathing apparatuses. They always wear helmet to protect their head. And they wear thick gloves. Breathing apparatuses supply the fire fighters with air.</p>
-<p>Firefighters are heroes that risk their lives to save people and put out fires. The water pump can be connected to a fire hydrant or even a nearby lake, pond or swimming pool to draw water. The extendable ladder is used to reach high places to shoot water from their hose or rescue people trapped inside a burning building. Firefighters have finally put out the fire.</p>
+                <p>vue3.0的优化</p>
+<h4 id="源码优化"><a href="#源码优化" class="headerlink" title="源码优化"></a><strong>源码优化</strong></h4><p>1.更好的代码管理方式：使用monorepo来管理源码，提升代码的可维护性</p>
+<p>vue2.0源码结构：src下面有不同的模块</p>
+<p>vue3.0源码结构：不同的packages</p>
+<p>package（如reactivity这个响应库）时可以独立于vue.js使用的，这样用户如果只想是哟个vuejs3.0的响应式能力，可单独依赖这个响应式库而不用依赖整个vue.js,减少了引用包的体积大小，而vuejs2.0是做不到这一点的。</p>
+<p>2.使用typescript来开发源码（vue2.0使用flow，vue3.0使用Typescript)</p>
+<p>可以在编码期间帮你做类型检查，避免一些因类型问题导致的错误；</p>
+<p>有利于它去定义接口类型，利于IDE对变量类型的推导</p>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p>1.移除一些冷门的feature</p>
+<p>2.引入tree-shaking技术，将没有使用的组件或代码删除后再打包，减少了项目引入的vue.js包体积的大小</p>
+<p>3.数据劫持优化：使用proxy代替object.defineProperty对数据进行劫持。</p>
 <blockquote>
-<p>axe: 消防斧头 </p>
+<p>注意：proxyAPI并不能监听到内部深层次的对象变化，因此vue3.0的处理方式是在getter中去递归响应式，这样的好处是真正访问到的内部对象才会变成响应式，而不是无脑递归，这样在很大程度上也提升了性能</p>
+</blockquote>
+<h4 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h4><p>1.vue2.0的数据更新并触发重新渲染的粒度是组件级的，diff的过程不会区别节点，对于只含有少量动态节点的组件，浪费性能。vue3.0通过编译阶段对静态模板的分析，编译生成了block tree。借助block tree, vue3.0将vnode更新性能与模板整体大小相关提升为与动态内容的数量相关。</p>
+<p>2.对slot的编译优化</p>
+<p>3.事件侦听函数的缓存优化</p>
+<p>4.重写了diff算法</p>
+<h4 id="语法API优化"><a href="#语法API优化" class="headerlink" title="语法API优化"></a>语法API优化</h4><p>1.优化逻辑组织</p>
+<p>提供了composition API,  当组件中有多个逻辑关注点时，将某个逻辑关注点相关的代码都放在一个函数里。避免在methods, data, computed，watch中来回切换。</p>
+<p>2.优化逻辑复用</p>
+<p>vue2.0用mixin复用逻辑，容易导致命名冲突，同时数据来源不清晰。vue3.0用hooks的方式解决了这些问题。</p>
+<p>compositionAPI不是vue3.0的泛式，对于简单的组件依然可以使用optionalAPI.</p>
+<blockquote>
+<p>vue3.0使用ES2015开发，有些api如proxy是没有polyfill的，所以对于兼容性较高的项目，要慎重考虑升级。</p>
 </blockquote>
 
                 
@@ -289,7 +308,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/English-Learning/" class="category-chain-item">English Learning</a>
+  <a href="/categories/Vue%E7%B3%BB%E5%88%97/" class="category-chain-item">Vue系列</a>
   
   
 
@@ -304,7 +323,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/fire-station/">#fire station</a>
+        <a href="/tags/vue3-0/">#vue3.0</a>
       
     </div>
   
@@ -316,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>17-fire station</div>
-      <div>http://example.com/2022/11/26/English-17/</div>
+      <div>Vue2.x与Vue3.x</div>
+      <div>http://example.com/2022/11/27/Vue2-x与Vue3-x/</div>
     </div>
     <div class="license-meta">
       
@@ -329,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月26日</div>
+          <div>2022年11月27日</div>
         </div>
       
       
@@ -361,18 +380,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/27/Vue2-x%E4%B8%8EVue3-x/" title="Vue2.x与Vue3.x">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue2.x与Vue3.x</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/26/English-16/" title="16-ice breaking talk for social phobia &amp;&amp;">
-                        <span class="hidden-mobile">16-ice breaking talk for social phobia &amp;&amp;</span>
+                      <a href="/2022/11/26/English-17/" title="17-fire station">
+                        <span class="hidden-mobile">17-fire station</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

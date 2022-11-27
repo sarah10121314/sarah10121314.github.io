@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Vue2.x与Vue3.x</title>
+    <link href="/2022/11/27/Vue2-x%E4%B8%8EVue3-x/"/>
+    <url>/2022/11/27/Vue2-x%E4%B8%8EVue3-x/</url>
+    
+    <content type="html"><![CDATA[<p>vue3.0的优化</p><h4 id="源码优化"><a href="#源码优化" class="headerlink" title="源码优化"></a><strong>源码优化</strong></h4><p>1.更好的代码管理方式：使用monorepo来管理源码，提升代码的可维护性</p><p>vue2.0源码结构：src下面有不同的模块</p><p>vue3.0源码结构：不同的packages</p><p>package（如reactivity这个响应库）时可以独立于vue.js使用的，这样用户如果只想是哟个vuejs3.0的响应式能力，可单独依赖这个响应式库而不用依赖整个vue.js,减少了引用包的体积大小，而vuejs2.0是做不到这一点的。</p><p>2.使用typescript来开发源码（vue2.0使用flow，vue3.0使用Typescript)</p><p>可以在编码期间帮你做类型检查，避免一些因类型问题导致的错误；</p><p>有利于它去定义接口类型，利于IDE对变量类型的推导</p><h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><p>1.移除一些冷门的feature</p><p>2.引入tree-shaking技术，将没有使用的组件或代码删除后再打包，减少了项目引入的vue.js包体积的大小</p><p>3.数据劫持优化：使用proxy代替object.defineProperty对数据进行劫持。</p><blockquote><p>注意：proxyAPI并不能监听到内部深层次的对象变化，因此vue3.0的处理方式是在getter中去递归响应式，这样的好处是真正访问到的内部对象才会变成响应式，而不是无脑递归，这样在很大程度上也提升了性能</p></blockquote><h4 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h4><p>1.vue2.0的数据更新并触发重新渲染的粒度是组件级的，diff的过程不会区别节点，对于只含有少量动态节点的组件，浪费性能。vue3.0通过编译阶段对静态模板的分析，编译生成了block tree。借助block tree, vue3.0将vnode更新性能与模板整体大小相关提升为与动态内容的数量相关。</p><p>2.对slot的编译优化</p><p>3.事件侦听函数的缓存优化</p><p>4.重写了diff算法</p><h4 id="语法API优化"><a href="#语法API优化" class="headerlink" title="语法API优化"></a>语法API优化</h4><p>1.优化逻辑组织</p><p>提供了composition API,  当组件中有多个逻辑关注点时，将某个逻辑关注点相关的代码都放在一个函数里。避免在methods, data, computed，watch中来回切换。</p><p>2.优化逻辑复用</p><p>vue2.0用mixin复用逻辑，容易导致命名冲突，同时数据来源不清晰。vue3.0用hooks的方式解决了这些问题。</p><p>compositionAPI不是vue3.0的泛式，对于简单的组件依然可以使用optionalAPI.</p><blockquote><p>vue3.0使用ES2015开发，有些api如proxy是没有polyfill的，所以对于兼容性较高的项目，要慎重考虑升级。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue3.0</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>17-fire station</title>
     <link href="/2022/11/26/English-17/"/>
     <url>/2022/11/26/English-17/</url>
