@@ -4,6 +4,38 @@
   
   
   <entry>
+    <title>性能优化</title>
+    <link href="/2022/11/27/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <url>/2022/11/27/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>合理处理公共资源</p><p>如果项目支持CDN，可以配置externals, 将vue， vue-router, vuex, echarts等公共资源，通过cdn的方式引入，不打包到项目里面</p><p>如果项目不支持CDN, 可以使用dllplugin动态链接库，将业务代码和公共资源代码相分离，公共资源单独打包，给这些公共资源设置强缓存，这样以后可以只打包业务代码，提升打包速度。</p></li><li><p>首屏必要资源preload预加载和DNS解析，通过多个cdn域名来缓解阻塞</p><p>使用DNS-prefetch, 当你浏览网页时，浏览器会对网页中的域名进行解析缓存，这样当你单击当前网页中的连接时就无需进行DNS的解析，减少用户等待时间，提高用户体验。</p><p>很多大型的网站，都会用N个cdn域名来做图片，静态文件等资源访问。解析单个域名，同样的地点加上高并发难免有点堵塞，通过多个cdn域名来分担高并发下的堵塞。</p></li><li><p>首屏不必要的资源延迟加载。</p><p>使用script标签的defer或者async属性，这两种方式都是异步加载js，不会阻塞dom的渲染。</p></li><li><p>合理利用缓存</p><p>html资源设置协商缓存，其他js,css,图片等资源设置强缓存。当用户再次打开页面时，如果该资源未变化，服务器返回304，直接使用缓存的文件。若返回200，则返回最新的html资源。</p></li><li><p>网络方面的优化</p><p>开启服务器gzip压缩，减少请求内容的体积，对文本类能压缩60%以上。</p><p>使用http2， 接口解析速度快，多路复用，首部压缩等。</p><p>减少http请求，使用url-loader, limit限制图片大小，小图片转成base64</p></li><li><p>代码层面的优化</p><p>第三方组件按需引入，如elementUI, moment，路由懒加载，组件懒加载</p><p>前端列表渲染优化，分页+虚拟列表</p><p>图片的懒加载</p><p>动画的优化：动画可以使用绝对定位，让其脱离文档流，修改动画不影响主界面。</p><p>函数的节流和防抖，减少接口请求的次数</p><p>使用骨架屏优化用户等待体验，可以根据不同路由配置不同的骨架。vue项目推荐使用vue-skeleton-webpack-plugin, 骨架屏的原理是将<div id='app'></div>的内容替换掉。</p><p>大数据的渲染，如果数据不会变化，vue项目可以使用object.freeze(). 正常情况下，vue2会将data中定义的对象变成响应式，但是如果判断对象的自身属性不可修改，就直接返回该对象，省去了递归遍历对象的时间和内存消耗。</p></li><li><p>webpack优化</p><p>提升构建速度或者优化代码体积</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>性能优化</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>知识点总结</title>
+    <link href="/2022/11/27/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    <url>/2022/11/27/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>for循环的性能大于forEach?</p><p>for循环没有额外的函数调用栈和上下文。ForEach函数签名实际上是：Array.forEach(function(currentValue, index, arr), thisValue)</p></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue2.x与Vue3.x</title>
     <link href="/2022/11/27/Vue2-x%E4%B8%8EVue3-x/"/>
     <url>/2022/11/27/Vue2-x%E4%B8%8EVue3-x/</url>
