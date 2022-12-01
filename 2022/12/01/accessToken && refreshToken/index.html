@@ -16,24 +16,24 @@
   <meta name="author" content="Sarah">
   <meta name="keywords" content="learn front-end">
   
-    <meta name="description" content="call, apply, bind 的区别 call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。 apply的参数是一个数组， call 和bind的参数是一个个传入。  123456789101112131415161718192021222324252627282930const per">
+    <meta name="description" content="accessToken: 访问令牌，用来访问受保护资源的凭证 refreshToken: 刷新令牌，用来获取accessToken的凭证  accessToken时效短，refreshToken时效长，accessToken和授权服务器和资源服务器交互，refreshToken只会和授权服务器交互。 accessToken颁发后可以直接使用，但refreshToken需要客户端密钥client_s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手写系列-call, apply">
-<meta property="og:url" content="http://example.com/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/index.html">
+<meta property="og:title" content="accessToken &amp;&amp; refreshToken">
+<meta property="og:url" content="http://example.com/2022/12/01/accessToken%20&&%20refreshToken/index.html">
 <meta property="og:site_name" content="童话镇">
-<meta property="og:description" content="call, apply, bind 的区别 call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。 apply的参数是一个数组， call 和bind的参数是一个个传入。  123456789101112131415161718192021222324252627282930const per">
+<meta property="og:description" content="accessToken: 访问令牌，用来访问受保护资源的凭证 refreshToken: 刷新令牌，用来获取accessToken的凭证  accessToken时效短，refreshToken时效长，accessToken和授权服务器和资源服务器交互，refreshToken只会和授权服务器交互。 accessToken颁发后可以直接使用，但refreshToken需要客户端密钥client_s">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.wallpaperhub.app/cloudcache/1/b/6/a/5/b/1b6a5b991deb364b476fe17af375bb2eae07f8a2.jpg">
-<meta property="article:published_time" content="2022-10-16T07:32:51.000Z">
-<meta property="article:modified_time" content="2022-10-28T13:39:35.859Z">
+<meta property="og:image" content="http://example.com/img/loading.gif">
+<meta property="article:published_time" content="2022-12-01T13:08:11.000Z">
+<meta property="article:modified_time" content="2022-12-01T14:39:53.113Z">
 <meta property="article:author" content="Sarah">
-<meta property="article:tag" content="call, apply">
+<meta property="article:tag" content="token">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.wallpaperhub.app/cloudcache/1/b/6/a/5/b/1b6a5b991deb364b476fe17af375bb2eae07f8a2.jpg">
+<meta name="twitter:image" content="http://example.com/img/loading.gif">
   
   
   
-  <title>手写系列-call, apply - 童话镇</title>
+  <title>accessToken &amp;&amp; refreshToken - 童话镇</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">手写系列-call, apply</span>
+            <span id="subtitle">accessToken && refreshToken</span>
           
         </div>
 
@@ -200,8 +200,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-16 15:32" pubdate>
-          2022年10月16日 下午
+        <time datetime="2022-12-01 21:08" pubdate>
+          2022年12月1日 晚上
         </time>
       </span>
     
@@ -212,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          761 字
+          640 字
         
       </span>
     
@@ -223,7 +223,7 @@
         
         
         
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -261,17 +261,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">手写系列-call, apply</h1>
+            <h1 style="display: none">accessToken &amp;&amp; refreshToken</h1>
             
             
               <div class="markdown-body">
                 
-                <h5 id="call-apply-bind-的区别"><a href="#call-apply-bind-的区别" class="headerlink" title="call, apply, bind 的区别"></a>call, apply, bind 的区别</h5><ol>
-<li>call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。</li>
-<li>apply的参数是一个数组， call 和bind的参数是一个个传入。</li>
+                <p><strong>accessToken</strong>: 访问令牌，用来访问受保护资源的凭证</p>
+<p><strong>refreshToken</strong>: 刷新令牌，用来获取accessToken的凭证</p>
+<p><img src="/img/loading.gif" srcset="/img/loading.gif" lazyload data-original="C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20221201214126612.png" alt="image-20221201214126612"></p>
+<p>accessToken时效短，refreshToken时效长，accessToken和授权服务器和资源服务器交互，refreshToken只会和授权服务器交互。</p>
+<p>accessToken颁发后可以直接使用，但refreshToken需要客户端密钥client_secret.</p>
+<p>颁发一个1小时有效期的accessToken 和6小时有效期的refreshToken, 当accessToken快过期时，使用refreshToken获取一个新的accessToken, 直至refreshToken过期，用户重新登录。整个过程中，用户只需要登录一次，用户体验好。</p>
+<blockquote>
+<p>accessToken泄漏了怎么办？没关系，它很快会过期。</p>
+<p>refreshToken泄漏了怎么办？没关系，使用refreshToken是需要客户端密钥client_secret的。</p>
+</blockquote>
+<p> 假设有一个用户需要在后台管理界面上操作6个小时</p>
+<ol>
+<li><p>颁发一个有效性很长的 access_token, 比如 6 个小时, 或者可以更长, 这样用户只需要刚开始登录一次, access_token 可以一直使用, 直到 access_token 过期, 然后重复, 这种是不安全的, access_token 的时效太长, 也就失去了本身的意义。</p>
+</li>
+<li><p>颁发一个1小时有效期的 access_token, 过期后重新登录授权, 这样用户需要登录 6 次, 安全倒是有了, 但是用户体验极差</p>
+</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Xiaoxiao&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayName</span>(<span class="hljs-params">age</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`this is my name:<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, age:<span class="hljs-subst">$&#123;age&#125;</span>`</span>);<br>&#125;<br><br>sayName.<span class="hljs-title function_">myCall</span>(person); <span class="hljs-comment">// </span><br>sayName.<span class="hljs-title function_">call</span>(person); <span class="hljs-comment">// </span><br><br><span class="hljs-comment">// 实现call</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](...args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 实现apply</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myApply</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
@@ -290,7 +301,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/" class="category-chain-item">手写系列</a>
+  <a href="/categories/%E7%BD%91%E7%BB%9C/" class="category-chain-item">网络</a>
   
   
 
@@ -305,7 +316,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/call-apply/">#call, apply</a>
+        <a href="/tags/token/">#token</a>
       
     </div>
   
@@ -317,8 +328,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>手写系列-call, apply</div>
-      <div>http://example.com/2022/10/16/手写系列之- call, apply/</div>
+      <div>accessToken &amp;&amp; refreshToken</div>
+      <div>http://example.com/2022/12/01/accessToken &amp;&amp; refreshToken/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +341,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月16日</div>
+          <div>2022年12月1日</div>
         </div>
       
       
@@ -362,9 +373,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/" title="手写系列-bind">
+                      <a href="/2022/12/01/HTTP2.0/" title="HTTP2.0">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">手写系列-bind</span>
+                        <span class="hidden-mobile">HTTP2.0</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -372,8 +383,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20debouce,%20throttle/" title="手写系列-debounce, throttle">
-                        <span class="hidden-mobile">手写系列-debounce, throttle</span>
+                      <a href="/2022/11/27/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="性能优化">
+                        <span class="hidden-mobile">性能优化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

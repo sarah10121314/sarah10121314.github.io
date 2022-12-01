@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>HTTP2.0</title>
+    <link href="/2022/12/01/HTTP2.0/"/>
+    <url>/2022/12/01/HTTP2.0/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/yexudengzhidao/article/details/98207149">https://blog.csdn.net/yexudengzhidao/article/details/98207149</a></p><p><a href="https://blog.csdn.net/Huangjiazhen711/article/details/127221977?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127221977-blog-98207149.pc_relevant_recovery_v2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-127221977-blog-98207149.pc_relevant_recovery_v2&amp;utm_relevant_index=5">https://blog.csdn.net/Huangjiazhen711/article/details/127221977?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-2-127221977-blog-98207149.pc_relevant_recovery_v2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-2-127221977-blog-98207149.pc_relevant_recovery_v2&amp;utm_relevant_index=5</a></p><p>首部压缩，多路复用，请求优先级，服务端推送</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>HTTP 2.0</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>accessToken &amp;&amp; refreshToken</title>
+    <link href="/2022/12/01/accessToken%20&amp;&amp;%20refreshToken/"/>
+    <url>/2022/12/01/accessToken%20&amp;&amp;%20refreshToken/</url>
+    
+    <content type="html"><![CDATA[<p><strong>accessToken</strong>: 访问令牌，用来访问受保护资源的凭证</p><p><strong>refreshToken</strong>: 刷新令牌，用来获取accessToken的凭证</p><p><img src="/img/loading.gif" data-original="C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20221201214126612.png" alt="image-20221201214126612"></p><p>accessToken时效短，refreshToken时效长，accessToken和授权服务器和资源服务器交互，refreshToken只会和授权服务器交互。</p><p>accessToken颁发后可以直接使用，但refreshToken需要客户端密钥client_secret.</p><p>颁发一个1小时有效期的accessToken 和6小时有效期的refreshToken, 当accessToken快过期时，使用refreshToken获取一个新的accessToken, 直至refreshToken过期，用户重新登录。整个过程中，用户只需要登录一次，用户体验好。</p><blockquote><p>accessToken泄漏了怎么办？没关系，它很快会过期。</p><p>refreshToken泄漏了怎么办？没关系，使用refreshToken是需要客户端密钥client_secret的。</p></blockquote><p> 假设有一个用户需要在后台管理界面上操作6个小时</p><ol><li><p>颁发一个有效性很长的 access_token, 比如 6 个小时, 或者可以更长, 这样用户只需要刚开始登录一次, access_token 可以一直使用, 直到 access_token 过期, 然后重复, 这种是不安全的, access_token 的时效太长, 也就失去了本身的意义。</p></li><li><p>颁发一个1小时有效期的 access_token, 过期后重新登录授权, 这样用户需要登录 6 次, 安全倒是有了, 但是用户体验极差</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>token</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>性能优化</title>
     <link href="/2022/11/27/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     <url>/2022/11/27/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
@@ -1163,31 +1213,6 @@
   
   
   <entry>
-    <title>手写系列-call, apply</title>
-    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/"/>
-    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/</url>
-    
-    <content type="html"><![CDATA[<h5 id="call-apply-bind-的区别"><a href="#call-apply-bind-的区别" class="headerlink" title="call, apply, bind 的区别"></a>call, apply, bind 的区别</h5><ol><li>call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。</li><li>apply的参数是一个数组， call 和bind的参数是一个个传入。</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Xiaoxiao&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayName</span>(<span class="hljs-params">age</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`this is my name:<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, age:<span class="hljs-subst">$&#123;age&#125;</span>`</span>);<br>&#125;<br><br>sayName.<span class="hljs-title function_">myCall</span>(person); <span class="hljs-comment">// </span><br>sayName.<span class="hljs-title function_">call</span>(person); <span class="hljs-comment">// </span><br><br><span class="hljs-comment">// 实现call</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](...args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 实现apply</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myApply</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>手写系列</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>call, apply</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>手写系列-bind</title>
     <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/"/>
     <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20bind/</url>
@@ -1205,6 +1230,31 @@
     <tags>
       
       <tag>bind</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>手写系列-call, apply</title>
+    <link href="/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/"/>
+    <url>/2022/10/16/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97%E4%B9%8B-%20call,%20apply/</url>
+    
+    <content type="html"><![CDATA[<h5 id="call-apply-bind-的区别"><a href="#call-apply-bind-的区别" class="headerlink" title="call, apply, bind 的区别"></a>call, apply, bind 的区别</h5><ol><li>call, apply, bind 都可以修改this的指向，但是bind是返回一个新的函数，并没有执行。call和apply改变this的同时，并调用了函数。</li><li>apply的参数是一个数组， call 和bind的参数是一个个传入。</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Xiaoxiao&#x27;</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayName</span>(<span class="hljs-params">age</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`this is my name:<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, age:<span class="hljs-subst">$&#123;age&#125;</span>`</span>);<br>&#125;<br><br>sayName.<span class="hljs-title function_">myCall</span>(person); <span class="hljs-comment">// </span><br>sayName.<span class="hljs-title function_">call</span>(person); <span class="hljs-comment">// </span><br><br><span class="hljs-comment">// 实现call</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myCall</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](...args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 实现apply</span><br><span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">myApply</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-keyword">const</span> target = obj || <span class="hljs-variable language_">window</span>;<br>    <span class="hljs-keyword">const</span> key = <span class="hljs-title class_">Symbol</span>();<br>    target[key] = <span class="hljs-variable language_">this</span>;<br>    <span class="hljs-keyword">const</span> args = [...<span class="hljs-variable language_">arguments</span>].<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">const</span> res = target[key](args)<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>手写系列</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>call, apply</tag>
       
     </tags>
     
